@@ -20,8 +20,8 @@ import org.usfirst.frc.team3504.robot.commands.*;
 public class OI {
 	private Joystick drivingStick;
 	
-	Button button1;
-	Button button2;
+	private Button button1;
+	private Button button2;
 	public OI() {
 		drivingStick = new Joystick(RobotMap.JOYSTICK_PORT);
 		
