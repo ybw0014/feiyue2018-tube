@@ -62,11 +62,11 @@ public class Chassis extends Subsystem {
     	
     	//invert(true); //uncomment if needed
     	//if needed to invert the talons, do before putting into the drive
-    	drive = new DifferentialDrive(masterRight, masterLeft);
+    	drive = new DifferentialDrive(masterLeft, masterRight);
     	
     	drive.setSafetyEnabled(true);
     	//this line is to set it so the joystick isn't too sensitive to input
-    	drive.setExpiration(0.1);
+    	//drive.setExpiration(0.1);
     	drive.setMaxOutput(1.0);
 
     }

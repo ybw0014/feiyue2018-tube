@@ -11,7 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class RobotMap {
 	
-	public static final int JOYSTICK_PORT = 1;
+	public static final int JOYSTICK_PORT = 0;
 	
 	public static WPI_TalonSRX chassisMasterLeft;
 	public static WPI_TalonSRX chassisSlaveLeftA;
@@ -23,11 +23,11 @@ public class RobotMap {
 	
 	public static void init() {
 		chassisMasterLeft = new WPI_TalonSRX(1);
-		chassisSlaveLeftA = new WPI_TalonSRX(1);
-		chassisSlaveLeftB = new WPI_TalonSRX(1);
-		chassisMasterRight = new WPI_TalonSRX(1);
-		chassisSlaveRightA = new WPI_TalonSRX(1);
-		chassisSlaveRightB = new WPI_TalonSRX(1);
+		chassisSlaveLeftA = new WPI_TalonSRX(2);
+		chassisSlaveLeftB = new WPI_TalonSRX(3);
+		chassisMasterRight = new WPI_TalonSRX(6);
+		chassisSlaveRightA = new WPI_TalonSRX(7);
+		chassisSlaveRightB = new WPI_TalonSRX(8);
 		
 	}
 	
