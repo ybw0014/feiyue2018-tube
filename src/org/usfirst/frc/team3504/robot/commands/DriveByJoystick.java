@@ -19,7 +19,7 @@ public class DriveByJoystick extends Command{
     	//graph plane, if the plane was put flat on the controller (y is forward back, x
     	//left right)
     	//for some reason on the bot, y negative is forward... (basically check front back)
-    	Robot.chassis.driveByJoystick(Robot.oi.getDrivingJoystickY(), Robot.oi.getDrivingJoystickX());
+    	Robot.chassis.driveByJoystick(Robot.oi.getDrivingJoyStickY(), Robot.oi.getDrivingJoyStickX());
     }
 
     // Make this return true when this Command no longer needs to run execute()

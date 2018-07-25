@@ -25,8 +25,8 @@ public class OI {
 	public OI() {
 		drivingStick = new Joystick(RobotMap.JOYSTICK_PORT);
 		
-		button1 = new JoystickButton(drivingStick, RobotMap.JOYSTICK_BUTTON_1); 
-		button2 = new JoystickButton(drivingStick, RobotMap.JOYSTICK_BUTTON_2);
+		button1 = new JoystickButton(drivingStick, 1); 
+		button2 = new JoystickButton(drivingStick, 2);
 
 	}
 	public double getDrivingJoyStickY(){

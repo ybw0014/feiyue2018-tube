@@ -12,8 +12,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class RobotMap {
 	
 	public static final int JOYSTICK_PORT = 1;
-	public static final int JOYSTICK_BUTTON_1 = 1;
-	public static final int JOYSTICK_BUTTON_2 = 2;
 	
 	public static WPI_TalonSRX chassisMasterLeft;
 	public static WPI_TalonSRX chassisSlaveLeftA;
