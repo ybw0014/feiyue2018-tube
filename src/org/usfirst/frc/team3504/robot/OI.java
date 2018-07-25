@@ -27,7 +27,9 @@ public class OI {
 		
 		button1 = new JoystickButton(drivingStick, 1); 
 		button2 = new JoystickButton(drivingStick, 2);
-
+		
+		button1.whenPressed(new DriveForward());
+		button2.whenPressed(new DriveForwardByTime(2000));
 	}
 	public double getDrivingJoyStickY(){
 		return drivingStick.getY();

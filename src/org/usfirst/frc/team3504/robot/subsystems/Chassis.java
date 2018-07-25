@@ -66,7 +66,7 @@ public class Chassis extends Subsystem {
     	
     	drive.setSafetyEnabled(true);
     	//this line is to set it so the joystick isn't too sensitive to input
-    	//drive.setExpiration(0.1);
+    	drive.setExpiration(0.1);
     	drive.setMaxOutput(1.0);
 
     }
@@ -121,6 +121,14 @@ public class Chassis extends Subsystem {
     	
     	slaveRightA.follow(masterRight, FollowerType.PercentOutput);
     	slaveRightB.follow(masterRight, FollowerType.PercentOutput);
+    }
+    
+    public void forward() {
+    	drive.tankDrive(0.1, 0.1);
+    }
+    
+    public void backward() {
+    	drive.tankDrive(-0.1, -0.1);
     }
     
     public void stop() {
