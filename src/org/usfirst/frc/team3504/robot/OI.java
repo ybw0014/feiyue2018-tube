@@ -7,7 +7,9 @@
 
 package org.usfirst.frc.team3504.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team3504.robot.commands.*;
 
@@ -16,5 +18,23 @@ import org.usfirst.frc.team3504.robot.commands.*;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	private Joystick drivingStick;
 	
+	Button button1;
+	Button button2;
+	public OI() {
+		drivingStick = new Joystick(RobotMap.JOYSTICK_PORT);
+		
+		button1 = new JoystickButton(drivingStick, RobotMap.JOYSTICK_BUTTON_1); 
+		button2 = new JoystickButton(drivingStick, RobotMap.JOYSTICK_BUTTON_2);
+
+	}
+	public double getDrivingJoyStickY(){
+		return drivingStick.getY();
+	}
+
+	public double getDrivingJoyStickX(){
+		return drivingStick.getX();
+	}
+
 }
