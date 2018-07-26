@@ -36,7 +36,7 @@ public class OI {
 	}
 
 	public double getDrivingJoyStickX(){
-		return drivingStick.getX();
+		return drivingStick.getX(); 
 	}
 
 }

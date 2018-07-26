@@ -29,5 +29,4 @@ public class RobotMap {
 		chassisSlaveRightA = new WPI_TalonSRX(13);
 		chassisSlaveRightB = new WPI_TalonSRX(14);
 	}
-	
 }
