@@ -5,14 +5,16 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveForwardByTime extends Command{
 	private int time;
+	private double speed;
 	private double startTime;
-	public DriveForwardByTime(int timeInMs) {
+	public DriveForwardByTime(int timeInMs,double speed) {
 		requires(Robot.chassis);
 		this.time = timeInMs;
+		this.speed = speed;
 		this.startTime = 0;
 	}
 	public void initialize() {
-		Robot.chassis.setSpeed(0.4);
+		Robot.chassis.setSpeed(0.8);
 		this.startTime = System.currentTimeMillis();
 	}
 

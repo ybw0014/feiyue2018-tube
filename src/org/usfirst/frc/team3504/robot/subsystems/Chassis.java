@@ -24,7 +24,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 
 public class Chassis extends Subsystem {
-	//probably should come up with better names
+	
     private final WPI_TalonSRX masterLeft = RobotMap.chassisMasterLeft;
     private final WPI_TalonSRX slaveLeftA = RobotMap.chassisSlaveLeftA;
     private final WPI_TalonSRX slaveLeftB = RobotMap.chassisSlaveLeftB;
@@ -58,7 +58,7 @@ public class Chassis extends Subsystem {
     	
     	//reverse();
     	
-    	speed = 0.4;
+    	speed = 0.8;
     	
     	setFollowerMode();
     	
@@ -77,14 +77,11 @@ public class Chassis extends Subsystem {
     public void initDefaultCommand() {
         setDefaultCommand(new DriveByJoystick());
 
-        // Set the default command for a subsystem here.
-        // setDefaultCommand(new MySpecialCommand());
     }
 
     @Override
     public void periodic() {
-    	//if you had something that needed to executed on a periodic sort of time
-    	//instead of tiem, this is where you would put the commands
+    	
     }
     
     public void driveByJoystick(double yDir, double xDir){
