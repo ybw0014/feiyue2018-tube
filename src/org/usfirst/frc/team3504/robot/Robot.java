@@ -27,6 +27,7 @@ import org.usfirst.frc.team3504.robot.subsystems.*;
 public class Robot extends TimedRobot {
 	public static OI oi;
 	public static Chassis chassis;
+	public static Solenoid solenoid;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -40,6 +41,7 @@ public class Robot extends TimedRobot {
 		RobotMap.init();
 		
 		chassis = new Chassis();
+		solenoid = new Solenoid();
 
 		oi = new OI();
 //		chooser.addDefault("Default Auto", new ExampleCommand());
