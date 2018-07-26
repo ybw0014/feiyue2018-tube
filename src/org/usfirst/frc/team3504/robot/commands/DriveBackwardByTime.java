@@ -14,13 +14,12 @@ public class DriveBackwardByTime extends Command{
 		this.startTime = 0;
 	}
 	public void initialize() {
-		Robot.chassis.setSpeed(speed);
 		this.startTime = System.currentTimeMillis();
 	}
 
     @Override
     protected void execute() {
-    	Robot.chassis.backward();
+    	Robot.chassis.backward(0.8);
     }
 
     @Override

@@ -33,12 +33,10 @@ public class Chassis extends Subsystem {
     private final WPI_TalonSRX slaveRightB = RobotMap.chassisSlaveRightB;
     
     private DifferentialDrive drive;
-    private double speed;
 
     public Chassis() {
     	//This is the constructor
     	
-    	//Safety and brakes ----------------------------------
     	masterLeft.setNeutralMode(NeutralMode.Brake);
     	slaveLeftA.setNeutralMode(NeutralMode.Brake);
     	slaveLeftB.setNeutralMode(NeutralMode.Brake);
@@ -54,20 +52,21 @@ public class Chassis extends Subsystem {
     	masterRight.setSafetyEnabled(false);
     	slaveRightA.setSafetyEnabled(false);
     	slaveRightB.setSafetyEnabled(false);
-    	//-----------------------------------------------------
     	
     	//reverse();
     	
-    	speed = 0.8;
+    	slaveLeftA.follow(masterLeft, FollowerType.PercentOutput);
+    	slaveLeftB.follow(masterLeft, FollowerType.PercentOutput);
     	
-    	setFollowerMode();
+    	slaveRightA.follow(masterRight, FollowerType.PercentOutput);
+    	slaveRightB.follow(masterRight, FollowerType.PercentOutput);
     	
     	//invert(true); //uncomment if needed
     	//if needed to invert the talons, do before putting into the drive
+    	
     	drive = new DifferentialDrive(masterLeft, masterRight);
     	
     	drive.setSafetyEnabled(false);
-    	//this line is to set it so the joystick isn't too sensitive to input
     	drive.setExpiration(0.1);
     	drive.setMaxOutput(1.0);
 
@@ -85,7 +84,7 @@ public class Chassis extends Subsystem {
     }
     
     public void driveByJoystick(double yDir, double xDir){
-    	SmartDashboard.putString("driveByJoystick?", yDir + "," + xDir);
+    	SmartDashboard.putString("driveByJoyStick:", "Y: " + yDir + "  X: " + xDir);
     	drive.arcadeDrive(yDir,xDir);
     }
 
@@ -113,25 +112,12 @@ public class Chassis extends Subsystem {
     	slaveRightB.setInverted(true);
     }
     
-    public void setFollowerMode() {
-    	//follower code
-    	slaveLeftA.follow(masterLeft, FollowerType.PercentOutput);
-    	slaveLeftB.follow(masterLeft, FollowerType.PercentOutput);
-    	
-    	slaveRightA.follow(masterRight, FollowerType.PercentOutput);
-    	slaveRightB.follow(masterRight, FollowerType.PercentOutput);
-    }
-    
-    public void forward() {
+    public void forward(double speed) {
     	drive.tankDrive(speed, speed);
     }
     
-    public void backward() {
+    public void backward(double speed) {
     	drive.tankDrive(-speed, -speed);
-    }
-    
-    public void setSpeed(double speed) {
-    	this.speed = speed;
     }
     
     public DifferentialDrive getDrive() {

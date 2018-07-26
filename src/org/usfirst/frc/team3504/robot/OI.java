@@ -39,10 +39,6 @@ public class OI {
 		button11 = new JoystickButton(drivingStick, 11);
 		button12 = new JoystickButton(drivingStick, 12);
 		
-		//button1.whenPressed(new DriveForwardByTime(2000,0.8));
-		//button2.whenPressed(new DriveBackwardByTime(2000,0.8));
-		//button3.whenPressed(new OpenSolenoid());
-		//button4.whenPressed(new CloseSolenoid());
 		
 		button4.whenPressed(new DriveForwardByTime(2000,0.8));
 		button2.whenPressed(new DriveBackwardByTime(2000,0.8));
