@@ -28,8 +28,8 @@ public class RobotMap {
 		chassisMasterLeft = new WPI_TalonSRX(1);
 		chassisSlaveLeftA = new WPI_TalonSRX(2);
 		chassisSlaveLeftB = new WPI_TalonSRX(3);
-		chassisMasterRight = new WPI_TalonSRX(12);
-		chassisSlaveRightA = new WPI_TalonSRX(13);
-		chassisSlaveRightB = new WPI_TalonSRX(14);
+		chassisMasterRight = new WPI_TalonSRX(6);
+		chassisSlaveRightA = new WPI_TalonSRX(7);
+		chassisSlaveRightB = new WPI_TalonSRX(8);
 	}
 }

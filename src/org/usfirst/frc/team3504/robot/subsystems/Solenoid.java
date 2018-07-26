@@ -11,7 +11,7 @@ public class Solenoid extends Subsystem{
 	private static DoubleSolenoid doublesolenoid;
 	
 	public Solenoid() {
-		doublesolenoid = new DoubleSolenoid(RobotMap.SOLENOID_FORWARD_PORT, RobotMap.SOLENOID_FORWARD_PORT);
+		doublesolenoid = new DoubleSolenoid(RobotMap.SOLENOID_FORWARD_PORT, RobotMap.SOLENOID_BACKWARD_PORT);
 	}
 	
 	public void openSolenoid() {

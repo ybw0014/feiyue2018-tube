@@ -3,24 +3,26 @@ package org.usfirst.frc.team3504.robot.commands;
 import org.usfirst.frc.team3504.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveForward extends Command{
-	public DriveForward() {
+public class DriveBackwardByTime extends Command{
+	private int time;
+	private double startTime;
+	public DriveBackwardByTime(int timeInMs) {
 		requires(Robot.chassis);
+		this.time = timeInMs;
+		this.startTime = System.currentTimeMillis();
 	}
-	
-	@Override
 	public void initialize() {
-		
+		Robot.chassis.setSpeed(0.4);
 	}
 
     @Override
     protected void execute() {
-    	Robot.chassis.forward();
+    	Robot.chassis.backward();
     }
 
     @Override
     protected boolean isFinished() {
-        return false;
+        return (System.currentTimeMillis()-this.startTime)>=this.time;
     }
 
     @Override
