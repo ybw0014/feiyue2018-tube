@@ -41,7 +41,7 @@ public class Robot extends TimedRobot {
 		RobotMap.init();
 		
 		chassis = new Chassis();
-		//solenoid = new Solenoid();
+		solenoid = new Solenoid();
 
 		oi = new OI();
 //		chooser.addDefault("Default Auto", new ExampleCommand());

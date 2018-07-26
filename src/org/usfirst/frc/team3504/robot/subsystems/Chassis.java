@@ -58,7 +58,7 @@ public class Chassis extends Subsystem {
     	
     	//reverse();
     	
-    	speed = 0.1;
+    	speed = 0.4;
     	
     	setFollowerMode();
     	

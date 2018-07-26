@@ -22,14 +22,20 @@ public class OI {
 	
 	private Button button1;
 	private Button button2;
+	private Button button3;
+	private Button button4;
 	public OI() {
 		drivingStick = new Joystick(RobotMap.JOYSTICK_PORT);
 		
 		button1 = new JoystickButton(drivingStick, 1); 
 		button2 = new JoystickButton(drivingStick, 2);
+		button3 = new JoystickButton(drivingStick, 3);
+		button4 = new JoystickButton(drivingStick, 4);
 		
 		button1.whenPressed(new DriveForwardByTime(3000));
 		button2.whenPressed(new DriveBackwardByTime(2000));
+		button3.whenPressed(new OpenSolenoid());
+		button4.whenPressed(new CloseSolenoid());
 	}
 	public Joystick getJoyStick() {
 		return this.drivingStick;

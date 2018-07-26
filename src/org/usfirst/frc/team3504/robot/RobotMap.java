@@ -13,8 +13,8 @@ public class RobotMap {
 	
 	public static final int JOYSTICK_PORT = 0;
 	
-	public static final int SOLENOID_FORWARD_PORT = 1;
-	public static final int SOLENOID_BACKWARD_PORT = 2;
+	public static final int SOLENOID_FORWARD_CHANNEL = 0;
+	public static final int SOLENOID_BACKWARD_CHANNEL = 1;
 	
 	public static WPI_TalonSRX chassisMasterLeft;
 	public static WPI_TalonSRX chassisSlaveLeftA;

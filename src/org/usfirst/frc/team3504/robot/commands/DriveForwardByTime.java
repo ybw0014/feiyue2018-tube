@@ -9,10 +9,11 @@ public class DriveForwardByTime extends Command{
 	public DriveForwardByTime(int timeInMs) {
 		requires(Robot.chassis);
 		this.time = timeInMs;
-		this.startTime = System.currentTimeMillis();
+		this.startTime = 0;
 	}
 	public void initialize() {
 		Robot.chassis.setSpeed(0.4);
+		this.startTime = System.currentTimeMillis();
 	}
 
     @Override
