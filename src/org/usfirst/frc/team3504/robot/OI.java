@@ -40,12 +40,17 @@ public class OI {
 		button12 = new JoystickButton(drivingStick, 12);
 		
 		
-		button4.whenPressed(new DriveForwardByTime(2000,0.8));
-		button2.whenPressed(new DriveBackwardByTime(2000,0.8));
+		button2.whenPressed(new DriveForwardByTime(2000,0.8));
+		button3.whenPressed(new DriveBackwardByTime(2000,0.8));
 
 		button1.whenPressed(new OpenSolenoid());
-		button3.whenPressed(new CloseSolenoid());
+		button4.whenPressed(new CloseSolenoid());
 		
+		button5.whenPressed(new Rotate(-30));
+		button6.whenPressed(new Rotate(30));
+		
+		drivingStick.gettw
+				
 	}
 	public Joystick getJoyStick() {
 		return this.drivingStick;
