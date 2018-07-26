@@ -33,7 +33,7 @@ public class Chassis extends Subsystem {
     private final WPI_TalonSRX slaveRightB = RobotMap.chassisSlaveRightB;
     
     private DifferentialDrive drive;
-
+    private double speed;
 
     public Chassis() {
     	//This is the constructor
@@ -57,6 +57,8 @@ public class Chassis extends Subsystem {
     	//-----------------------------------------------------
     	
     	//reverse();
+    	
+    	speed = 0.1;
     	
     	setFollowerMode();
     	
@@ -124,11 +126,19 @@ public class Chassis extends Subsystem {
     }
     
     public void forward() {
-    	drive.tankDrive(0.1, 0.1);
+    	drive.tankDrive(speed, speed);
     }
     
     public void backward() {
-    	drive.tankDrive(-0.1, -0.1);
+    	drive.tankDrive(-speed, -speed);
+    }
+    
+    public void setSpeed(double speed) {
+    	this.speed = speed;
+    }
+    
+    public DifferentialDrive getDrive() {
+    	return this.drive;
     }
     
     public void stop() {

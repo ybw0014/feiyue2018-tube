@@ -12,7 +12,7 @@ public class DriveForwardByTime extends Command{
 		this.startTime = System.currentTimeMillis();
 	}
 	public void initialize() {
-		
+		Robot.chassis.setSpeed(0.4);
 	}
 
     @Override
