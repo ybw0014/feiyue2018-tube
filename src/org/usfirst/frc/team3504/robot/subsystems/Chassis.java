@@ -47,13 +47,13 @@ public class Chassis extends Subsystem {
     	slaveRightA.setNeutralMode(NeutralMode.Brake);
     	slaveRightB.setNeutralMode(NeutralMode.Brake);
     	
-    	masterLeft.setSafetyEnabled(true);
-    	slaveLeftA.setSafetyEnabled(true);
-    	slaveLeftB.setSafetyEnabled(true);
+    	masterLeft.setSafetyEnabled(false);
+    	slaveLeftA.setSafetyEnabled(false);
+    	slaveLeftB.setSafetyEnabled(false);
     	
-    	masterRight.setSafetyEnabled(true);
-    	slaveRightA.setSafetyEnabled(true);
-    	slaveRightB.setSafetyEnabled(true);
+    	masterRight.setSafetyEnabled(false);
+    	slaveRightA.setSafetyEnabled(false);
+    	slaveRightB.setSafetyEnabled(false);
     	//-----------------------------------------------------
     	
     	//reverse();
@@ -64,7 +64,7 @@ public class Chassis extends Subsystem {
     	//if needed to invert the talons, do before putting into the drive
     	drive = new DifferentialDrive(masterLeft, masterRight);
     	
-    	drive.setSafetyEnabled(true);
+    	drive.setSafetyEnabled(false);
     	//this line is to set it so the joystick isn't too sensitive to input
     	drive.setExpiration(0.1);
     	drive.setMaxOutput(1.0);
