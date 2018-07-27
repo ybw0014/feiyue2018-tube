@@ -20,7 +20,7 @@ public class DriveForwardByTime extends Command{
 
     @Override
     protected void execute() {
-    	Robot.chassis.forward(this.speed);
+    	Robot.chassis.tankDrive(this.speed,this.speed);
     }
 
     @Override

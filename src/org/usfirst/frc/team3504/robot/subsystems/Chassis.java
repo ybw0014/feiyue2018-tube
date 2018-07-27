@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.FollowerType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -28,6 +29,9 @@ public class Chassis extends Subsystem implements PIDOutput{
     private PIDController turnController;
     private AHRS ahrs;
     private double rotateToAngleRate; 
+    
+    private Encoder leftEncoder;
+    private Encoder rightEncoder;
 
 
     public Chassis() {
@@ -36,7 +40,6 @@ public class Chassis extends Subsystem implements PIDOutput{
     	masterLeft.setNeutralMode(NeutralMode.Brake);
     	slaveLeftA.setNeutralMode(NeutralMode.Brake);
     	slaveLeftB.setNeutralMode(NeutralMode.Brake);
-    	
     	masterRight.setNeutralMode(NeutralMode.Brake);
     	slaveRightA.setNeutralMode(NeutralMode.Brake);
     	slaveRightB.setNeutralMode(NeutralMode.Brake);
@@ -44,7 +47,6 @@ public class Chassis extends Subsystem implements PIDOutput{
     	masterLeft.setSafetyEnabled(false);
     	slaveLeftA.setSafetyEnabled(false);
     	slaveLeftB.setSafetyEnabled(false);
-    	
     	masterRight.setSafetyEnabled(false);
     	slaveRightA.setSafetyEnabled(false);
     	slaveRightB.setSafetyEnabled(false);
@@ -53,7 +55,6 @@ public class Chassis extends Subsystem implements PIDOutput{
     	
     	slaveLeftA.follow(masterLeft, FollowerType.PercentOutput);
     	slaveLeftB.follow(masterLeft, FollowerType.PercentOutput);
-    	
     	slaveRightA.follow(masterRight, FollowerType.PercentOutput);
     	slaveRightB.follow(masterRight, FollowerType.PercentOutput);
     	
@@ -78,7 +79,21 @@ public class Chassis extends Subsystem implements PIDOutput{
     	turnController.setContinuous(true);
     	turnController.enable();
     	
+    	leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_1, RobotMap.ENCODER_LEFT_2, false, Encoder.EncodingType.k4X);
+		leftEncoder.setMaxPeriod(.1);
+		leftEncoder.setMinRate(10);
+		leftEncoder.setDistancePerPulse(5);
+		leftEncoder.setReverseDirection(false);
+		leftEncoder.setSamplesToAverage(7);
+		
+		rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT_1, RobotMap.ENCODER_RIGHT_2, false, Encoder.EncodingType.k4X);
+		rightEncoder.setMaxPeriod(.1);
+		rightEncoder.setMinRate(10);
+		rightEncoder.setDistancePerPulse(5);
+		rightEncoder.setReverseDirection(false);
+		rightEncoder.setSamplesToAverage(7);
     	
+
 
     }
 
@@ -122,16 +137,12 @@ public class Chassis extends Subsystem implements PIDOutput{
     	slaveRightB.setInverted(true);
     }
     
-    public void forward(double speed) {
-    	drive.tankDrive(speed, speed);
+    public void arcadeDrive(double leftV,double rightV) {
+    	drive.arcadeDrive(leftV, rightV);
     }
     
-    public void backward(double speed) {
-    	drive.tankDrive(-speed, -speed);
-    }
-    
-    public void rotate(double left,double right) {
-    	drive.tankDrive(left, right);
+    public void tankDrive(double leftV,double rightV) {
+    	drive.tankDrive(leftV, rightV);
     }
     
     public DifferentialDrive getDrive() {

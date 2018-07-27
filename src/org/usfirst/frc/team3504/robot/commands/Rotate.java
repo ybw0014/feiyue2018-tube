@@ -41,9 +41,9 @@ public class Rotate extends Command{
     		double rotationRate = Robot.chassis.getRotationAngleRate();
     		if(Math.abs(Robot.chassis.getAHRS().getYaw()-this.yaw) < this.angle)
     			if(isTurningRight)
-    				Robot.chassis.rotate(rotationRate, -rotationRate);
+    				Robot.chassis.tankDrive(rotationRate, -rotationRate);
     			else
-    				Robot.chassis.rotate(-rotationRate, rotationRate);
+    				Robot.chassis.tankDrive(-rotationRate, rotationRate);
     		
     	} catch( RuntimeException ex ) {
     		DriverStation.reportError("Error communicating with drive system:  " + ex.getMessage(), true);

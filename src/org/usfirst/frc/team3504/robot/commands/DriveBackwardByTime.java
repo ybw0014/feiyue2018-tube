@@ -20,7 +20,7 @@ public class DriveBackwardByTime extends Command{
 
     @Override
     protected void execute() {
-    	Robot.chassis.backward(this.speed);
+    	Robot.chassis.tankDrive(-(this.speed),-(this.speed));
     }
 
     @Override

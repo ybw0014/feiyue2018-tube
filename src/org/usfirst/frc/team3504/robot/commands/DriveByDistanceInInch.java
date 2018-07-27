@@ -3,15 +3,17 @@ package org.usfirst.frc.team3504.robot.commands;
 import org.usfirst.frc.team3504.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveByDistance extends Command{
+public class DriveByDistanceInInch extends Command{
 	private double distance;
 	private double speed;
 	private double distanceTravelled;
+	private boolean isForward;
 	
-	public DriveByDistance(int distanceInInches,double speed) {
+	public DriveByDistanceInInch(int distanceInInches,double speed,boolean isForward) {
 		requires(Robot.chassis);
 		this.distance = distanceInInches;
 		this.speed = speed;
+		if(!isForward)this.speed=-(this.speed);
 	}
 	@Override
 	public void initialize() {
@@ -20,7 +22,7 @@ public class DriveByDistance extends Command{
 
     @Override
     protected void execute() {
-    	Robot.chassis.forward(this.speed);
+    	Robot.chassis.tankDrive(this.speed,this.speed);
     	
     }
 
