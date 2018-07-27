@@ -32,7 +32,7 @@ public class Robot extends TimedRobot {
 		solenoid = new Solenoid();
 
 		oi = new OI();
-//		chooser.addDefault("Default Auto", new ExampleCommand());
+		chooser.addDefault("Default Auto", new AutonomousCommands());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		

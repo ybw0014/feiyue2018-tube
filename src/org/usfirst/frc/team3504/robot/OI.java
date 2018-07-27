@@ -49,8 +49,7 @@ public class OI {
 		button5.whenPressed(new Rotate(-30));
 		button6.whenPressed(new Rotate(30));
 		
-		drivingStick.gettw
-				
+		
 	}
 	public Joystick getJoyStick() {
 		return this.drivingStick;

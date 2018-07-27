@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveByDistance extends Command{
 	private double distance;
 	private double speed;
+	private double distanceTravelled;
 	
 	public DriveByDistance(int distanceInInches,double speed) {
 		requires(Robot.chassis);
@@ -14,16 +15,18 @@ public class DriveByDistance extends Command{
 	}
 	@Override
 	public void initialize() {
+		this.distanceTravelled = 0;
 	}
 
     @Override
     protected void execute() {
+    	Robot.chassis.forward(this.speed);
     	
     }
 
     @Override
     protected boolean isFinished() {
-        return false;
+        
     }
 
     @Override
