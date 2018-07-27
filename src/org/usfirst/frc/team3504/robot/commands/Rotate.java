@@ -26,7 +26,7 @@ public class Rotate extends Command{
 		this.yaw = Robot.chassis.getAHRS().getYaw();
 		
 		while(Robot.chassis.getAHRS().isCalibrating()){
-		     Timer.delay(0.05);
+		     Timer.delay(0.02);
 		}
 		
 		Robot.chassis.getTurnController().setSetpoint(this.angle);

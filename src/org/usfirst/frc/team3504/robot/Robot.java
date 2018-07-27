@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3504.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -24,6 +25,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
+		DriverStation.reportWarning("Initialzing.", false);
 		RobotMap.init();
 		
 		chassis = new Chassis();
@@ -33,6 +35,8 @@ public class Robot extends TimedRobot {
 //		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		
+		DriverStation.reportWarning("Program has initialized.", false);
 	}
 
 	/**
@@ -42,7 +46,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		
+		DriverStation.reportWarning("Program has stopped running.", false);
 	}
 
 	@Override
@@ -102,7 +106,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		
 	}
 
 	/**
