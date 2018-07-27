@@ -13,13 +13,14 @@ public class DriveForwardByTime extends Command{
 		this.speed = speed;
 		this.startTime = 0;
 	}
+	@Override
 	public void initialize() {
 		this.startTime = System.currentTimeMillis();
 	}
 
     @Override
     protected void execute() {
-    	Robot.chassis.forward(0.8);
+    	Robot.chassis.forward(this.speed);
     }
 
     @Override

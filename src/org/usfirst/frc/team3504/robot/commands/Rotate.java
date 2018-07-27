@@ -9,10 +9,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Rotate extends Command{
 	private double angle;
 	private double yaw;
+	private boolean isTurningRight = true;
 	
 	public Rotate(double angle) {
 		requires(Robot.chassis);
-		this.angle = angle;
+		if(angle>=0)
+			this.angle = angle;
+		else {
+			this.angle = - angle;
+			this.isTurningRight = false;
+		}
+		
 	}
 	
 	public void initialize() {
@@ -32,8 +39,11 @@ public class Rotate extends Command{
     protected void execute() {
     	try {
     		double rotationRate = Robot.chassis.getRotationAngleRate();
-    		if(Robot.chassis.getAHRS().getYaw()-this.yaw < this.angle) 
-    			Robot.chassis.rotate(rotationRate, -rotationRate);
+    		if(Math.abs(Robot.chassis.getAHRS().getYaw()-this.yaw) < this.angle)
+    			if(isTurningRight)
+    				Robot.chassis.rotate(rotationRate, -rotationRate);
+    			else
+    				Robot.chassis.rotate(-rotationRate, rotationRate);
     		
     	} catch( RuntimeException ex ) {
     		DriverStation.reportError("Error communicating with drive system:  " + ex.getMessage(), true);
