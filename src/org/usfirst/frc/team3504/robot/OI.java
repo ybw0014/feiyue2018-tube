@@ -39,7 +39,6 @@ public class OI {
 		button11 = new JoystickButton(drivingStick, 11);
 		button12 = new JoystickButton(drivingStick, 12);
 		
-
 		button2.whenPressed(new OpenSolenoid());
 		button3.whenPressed(new CloseSolenoid());
 		

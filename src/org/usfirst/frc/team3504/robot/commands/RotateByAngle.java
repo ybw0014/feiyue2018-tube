@@ -6,12 +6,12 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Rotate extends Command{
+public class RotateByAngle extends Command{
 	private double angle;
 	private double yaw;
 	private boolean isTurningRight = true;
 	
-	public Rotate(double angle) {
+	public RotateByAngle(double angle) {
 		requires(Robot.chassis);
 		if(angle>=0)
 			this.angle = angle;

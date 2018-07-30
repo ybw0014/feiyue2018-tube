@@ -1,31 +1,36 @@
 package org.usfirst.frc.team3504.robot.commands;
 
 import org.usfirst.frc.team3504.robot.Robot;
+
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveBackwardByTime extends Command{
+public class RotateByTime extends Command{
 	private int time;
 	private double speed;
 	private double startTime;
-	public DriveBackwardByTime(int timeInMs,double speed) {
+	
+	public RotateByTime(int timeInMs, double speed, boolean isTurnRight) {
 		requires(Robot.chassis);
+		this.speed = speed;
 		this.time = timeInMs;
-		this.speed = -speed;
-		this.startTime = 0;
+		if(isTurnRight) this.speed = -speed;
+		
 	}
-	@Override
+	
 	public void initialize() {
 		this.startTime = System.currentTimeMillis();
 	}
 
     @Override
     protected void execute() {
-    	Robot.chassis.tankDrive(this.speed,this.speed);
+    	Robot.chassis.tankDrive(this.speed, this.speed);
     }
 
     @Override
     protected boolean isFinished() {
-        return (System.currentTimeMillis()-this.startTime)>=this.time;
+        return (System.currentTimeMillis() - this.startTime) >= this.time;
     }
 
     @Override
@@ -36,5 +41,5 @@ public class DriveBackwardByTime extends Command{
     @Override
     protected void interrupted() {
     	end(); 
-    } 
+    }
 }
