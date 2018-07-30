@@ -79,6 +79,14 @@ public class Chassis extends Subsystem implements PIDOutput{
     	turnController.setContinuous(true);
     	turnController.enable();
     	
+    	masterLeft.setSensorPhase(true);
+    	masterRight.setSensorPhase(true);
+    	
+    	masterLeft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,0);
+    	masterRight.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,0);
+    	
+    	
+    	
     	/*leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_1, RobotMap.ENCODER_LEFT_2, false, Encoder.EncodingType.k4X);
 		leftEncoder.setMaxPeriod(.1);
 		leftEncoder.setMinRate(10);
@@ -144,6 +152,14 @@ public class Chassis extends Subsystem implements PIDOutput{
     
     public DifferentialDrive getDrive() {
     	return this.drive;
+    }
+    
+    public void setFPID(WPI_TalonSRX talon) {
+    	talon.setSelectedSensorPosition(0, 0, 0);
+    	talon.config_kF(0, 0, 0);
+    	talon.config_kP(0, 0.5, 0);
+    	talon.config_kI(0, 0, 0);
+    	talon.config_kD(0, 0, 0);
     }
     
     @Override

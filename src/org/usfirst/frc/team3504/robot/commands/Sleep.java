@@ -2,15 +2,10 @@ package org.usfirst.frc.team3504.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class Sleep extends Command {
 	private double startTime;
 	private int time;
     public Sleep(int timeInMs) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	this.time = timeInMs;
     }
 

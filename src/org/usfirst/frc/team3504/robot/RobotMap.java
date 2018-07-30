@@ -34,11 +34,9 @@ public class RobotMap {
 	public static final int ENCODER_RIGHT_1 = 0;
 	public static final int ENCODER_RIGHT_2 = 0;
 	
-	public static final int LEFT_ENCODER_RATE = 1;
-	public static final int RIGHT_ENCODER_RATE = 1;
-	
 	public static final int CLIMBER = 8;
 	
+	public static final double WHEEL_DIAMETER = 1;
 	
 	public static void init() {
 		chassisMasterLeft = new WPI_TalonSRX(3);

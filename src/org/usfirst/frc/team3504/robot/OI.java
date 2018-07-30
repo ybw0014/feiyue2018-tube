@@ -39,6 +39,8 @@ public class OI {
 		button11 = new JoystickButton(drivingStick, 11);
 		button12 = new JoystickButton(drivingStick, 12);
 		
+		button1.whenPressed(new StopChassis());
+		
 		button2.whenPressed(new OpenPneumatic());
 		button3.whenPressed(new ClosePneumatic());
 		
@@ -48,6 +50,8 @@ public class OI {
 		button5.whenReleased(new LiftStop());
 		button7.whenPressed(new LiftDown());
 		button7.whenReleased(new LiftStop());
+		
+		
 	}
 	public Joystick getJoyStick() {
 		return this.drivingStick;
