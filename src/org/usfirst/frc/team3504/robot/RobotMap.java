@@ -28,10 +28,14 @@ public class RobotMap {
 	public static WPI_TalonSRX chassisSlaveRightA;
 	public static WPI_TalonSRX chassisSlaveRightB;
 	
+	//Encoder
 	public static final int ENCODER_LEFT_1 = 0;
 	public static final int ENCODER_LEFT_2 = 0;
 	public static final int ENCODER_RIGHT_1 = 0;
 	public static final int ENCODER_RIGHT_2 = 0;
+	
+	public static final int LEFT_ENCODER_RATE = 1;
+	public static final int RIGHT_ENCODER_RATE = 2;
 	
 	
 	public static void init() {

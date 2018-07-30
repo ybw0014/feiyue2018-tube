@@ -93,14 +93,11 @@ public class Chassis extends Subsystem implements PIDOutput{
 		rightEncoder.setReverseDirection(false);
 		rightEncoder.setSamplesToAverage(7);
     	
-
-
     }
 
     @Override
     public void initDefaultCommand() {
         setDefaultCommand(new DriveByJoystick());
-
     }
 
     @Override
@@ -165,6 +162,15 @@ public class Chassis extends Subsystem implements PIDOutput{
     public PIDController getTurnController() {
     	return this.turnController;
     }
+
+    public Encoder getLeftEncoder() {
+    	return this.leftEncoder;
+    }
+    
+    public Encoder getRightEncoder() {
+    	return this.rightEncoder;
+    }
+    
     public void stop() {
     	drive.stopMotor();
     }
