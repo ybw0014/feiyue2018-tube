@@ -27,6 +27,8 @@ public class RobotMap {
 	public static WPI_TalonSRX chassisMasterRight;
 	public static WPI_TalonSRX chassisSlaveRightA;
 	public static WPI_TalonSRX chassisSlaveRightB;
+
+	public static final double WHEEL_DIAMETER = 1;
 	
 	//Encoder
 	public static final int ENCODER_LEFT_1 = 0;
@@ -34,9 +36,12 @@ public class RobotMap {
 	public static final int ENCODER_RIGHT_1 = 0;
 	public static final int ENCODER_RIGHT_2 = 0;
 	
+	//CLimber
 	public static final int CLIMBER = 8;
 	
-	public static final double WHEEL_DIAMETER = 1;
+	//Intake
+	public static WPI_TalonSRX leftIntake;
+	public static WPI_TalonSRX rightIntake;
 	
 	public static void init() {
 		chassisMasterLeft = new WPI_TalonSRX(3);
@@ -46,6 +51,7 @@ public class RobotMap {
 		chassisSlaveRightA = new WPI_TalonSRX(2);
 		chassisSlaveRightB = new WPI_TalonSRX(4);
 		
-		
+		leftIntake = new WPI_TalonSRX(9);
+		rightIntake = new WPI_TalonSRX(10);
 	}
 }
