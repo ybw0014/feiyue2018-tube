@@ -5,9 +5,9 @@ import org.usfirst.frc.team3504.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class OpenSolenoid extends Command {
+public class ClosePneumatic extends Command {
 	
-	public OpenSolenoid() {		
+	public ClosePneumatic() {		
     	requires(Robot.solenoid);
 	}
 	
@@ -15,7 +15,7 @@ public class OpenSolenoid extends Command {
     }
 
     protected void execute() {
-    	Robot.solenoid.openSolenoid();
+    	Robot.solenoid.closeSolenoid();
     }
 
     protected boolean isFinished() {

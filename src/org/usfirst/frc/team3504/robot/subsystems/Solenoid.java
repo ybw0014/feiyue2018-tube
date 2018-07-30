@@ -10,7 +10,7 @@ public class Solenoid extends Subsystem{
 	private static DoubleSolenoid doublesolenoid;
 	
 	public Solenoid() {
-		doublesolenoid = new DoubleSolenoid(RobotMap.SOLENOID_FORWARD_CHANNEL, RobotMap.SOLENOID_BACKWARD_CHANNEL);
+		doublesolenoid = new DoubleSolenoid(RobotMap.PNEUMATIC_FORWARD_CHANNEL, RobotMap.PNEUMATIC_BACKWARD_CHANNEL);
 	}
 	
 	public void openSolenoid() {

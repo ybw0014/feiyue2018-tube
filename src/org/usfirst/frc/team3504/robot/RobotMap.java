@@ -17,8 +17,8 @@ public class RobotMap {
 	 */
 	//NORMAL
 	
-	public static final int SOLENOID_FORWARD_CHANNEL = 6;
-	public static final int SOLENOID_BACKWARD_CHANNEL = 7;
+	public static final int PNEUMATIC_FORWARD_CHANNEL = 6;
+	public static final int PNEUMATIC_BACKWARD_CHANNEL = 7;
 	
 	//Chassis
 	public static WPI_TalonSRX chassisMasterLeft;
@@ -36,6 +36,8 @@ public class RobotMap {
 	
 	public static final int LEFT_ENCODER_RATE = 1;
 	public static final int RIGHT_ENCODER_RATE = 1;
+	
+	public static final int CLIMBER = 8;
 	
 	
 	public static void init() {

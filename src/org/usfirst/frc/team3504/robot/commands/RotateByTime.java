@@ -16,7 +16,6 @@ public class RotateByTime extends Command{
 		this.speed = speed;
 		this.time = timeInMs;
 		if(isTurnRight) this.speed = -speed;
-		
 	}
 	
 	public void initialize() {
@@ -25,7 +24,7 @@ public class RotateByTime extends Command{
 
     @Override
     protected void execute() {
-    	Robot.chassis.tankDrive(this.speed, this.speed);
+    	Robot.chassis.tankDrive(this.speed, -this.speed);
     }
 
     @Override
