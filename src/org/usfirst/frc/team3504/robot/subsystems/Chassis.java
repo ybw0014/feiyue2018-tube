@@ -58,7 +58,7 @@ public class Chassis extends Subsystem implements PIDOutput{
     	slaveRightA.follow(masterRight, FollowerType.PercentOutput);
     	slaveRightB.follow(masterRight, FollowerType.PercentOutput);
     	
-    	//invert(true); //uncomment if needed
+    	this.setInvert(false,true); //uncomment if needed
     	//if needed to invert the talons, do before putting into the drive
     	
     	drive = new DifferentialDrive(masterLeft, masterRight);
@@ -79,7 +79,7 @@ public class Chassis extends Subsystem implements PIDOutput{
     	turnController.setContinuous(true);
     	turnController.enable();
     	
-    	leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_1, RobotMap.ENCODER_LEFT_2, false, Encoder.EncodingType.k4X);
+    	/*leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_1, RobotMap.ENCODER_LEFT_2, false, Encoder.EncodingType.k4X);
 		leftEncoder.setMaxPeriod(.1);
 		leftEncoder.setMinRate(10);
 		leftEncoder.setDistancePerPulse(5);
@@ -91,7 +91,7 @@ public class Chassis extends Subsystem implements PIDOutput{
 		rightEncoder.setMinRate(10);
 		rightEncoder.setDistancePerPulse(5);
 		rightEncoder.setReverseDirection(false);
-		rightEncoder.setSamplesToAverage(7);
+		rightEncoder.setSamplesToAverage(7);*/
     	
     }
 
@@ -111,16 +111,16 @@ public class Chassis extends Subsystem implements PIDOutput{
     }
 
     
-    public void invert(boolean x) {
+    public void setInvert(boolean left,boolean right) {
     	//if the moters are spinning in opposite directions
     	
-    	masterLeft.setInverted(false);
-    	slaveLeftA.setInverted(false);
-    	slaveLeftB.setInverted(false);
+    	masterLeft.setInverted(left);
+    	slaveLeftA.setInverted(left);
+    	slaveLeftB.setInverted(left);
     	
-    	masterRight.setInverted(x);
-    	slaveRightA.setInverted(x);
-    	slaveRightB.setInverted(x);
+    	masterRight.setInverted(right);
+    	slaveRightA.setInverted(right);
+    	slaveRightB.setInverted(right);
     }
     
     public void reverse() {

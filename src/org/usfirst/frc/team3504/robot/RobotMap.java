@@ -39,12 +39,12 @@ public class RobotMap {
 	
 	
 	public static void init() {
-		chassisMasterLeft = new WPI_TalonSRX(1);
-		chassisSlaveLeftA = new WPI_TalonSRX(2);
-		chassisSlaveLeftB = new WPI_TalonSRX(3);
-		chassisMasterRight = new WPI_TalonSRX(6);
-		chassisSlaveRightA = new WPI_TalonSRX(7);
-		chassisSlaveRightB = new WPI_TalonSRX(8);
+		chassisMasterLeft = new WPI_TalonSRX(3);
+		chassisSlaveLeftA = new WPI_TalonSRX(6);
+		chassisSlaveLeftB = new WPI_TalonSRX(5);
+		chassisMasterRight = new WPI_TalonSRX(1);
+		chassisSlaveRightA = new WPI_TalonSRX(2);
+		chassisSlaveRightB = new WPI_TalonSRX(4);
 		
 		
 	}
