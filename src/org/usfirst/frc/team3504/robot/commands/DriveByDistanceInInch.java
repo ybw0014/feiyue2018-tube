@@ -15,7 +15,7 @@ public class DriveByDistanceInInch extends Command{
 		requires(Robot.chassis);
 		this.distance = distanceInInches;
 		this.speed = speed;
-		if(!isForward)this.speed=-(this.speed);
+		if(!isForward)this.speed = -speed;
 	}
 	@Override
 	public void initialize() {

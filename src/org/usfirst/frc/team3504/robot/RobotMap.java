@@ -35,7 +35,7 @@ public class RobotMap {
 	public static final int ENCODER_RIGHT_2 = 0;
 	
 	public static final int LEFT_ENCODER_RATE = 1;
-	public static final int RIGHT_ENCODER_RATE = 2;
+	public static final int RIGHT_ENCODER_RATE = 1;
 	
 	
 	public static void init() {

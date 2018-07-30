@@ -52,6 +52,7 @@ public class Chassis extends Subsystem implements PIDOutput{
     	slaveRightB.setSafetyEnabled(false);
     	
     	//reverse();
+    	this.setInvert(false,false);
     	
     	slaveLeftA.follow(masterLeft, FollowerType.PercentOutput);
     	slaveLeftB.follow(masterLeft, FollowerType.PercentOutput);
@@ -65,7 +66,6 @@ public class Chassis extends Subsystem implements PIDOutput{
     	drive.setSafetyEnabled(false);
     	drive.setExpiration(0.1);
     	drive.setMaxOutput(1.0);
-
 
     	try {
     		ahrs = new AHRS(SPI.Port.kMXP);
@@ -123,7 +123,7 @@ public class Chassis extends Subsystem implements PIDOutput{
     	slaveRightB.setInverted(right);
     }
     
-    public void reverse() {
+    public void reverseAll() {
     	//if the motors are together but completely reversed (do not pair with invert)
     	masterLeft.setInverted(true);
     	slaveLeftA.setInverted(true);
