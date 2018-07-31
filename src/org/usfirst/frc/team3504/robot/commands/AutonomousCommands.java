@@ -9,9 +9,8 @@ public class AutonomousCommands extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         
-    	addSequential(new DriveForwardByTime(2000,0.8));
-    	addSequential(new Sleep(2000));
-    	addSequential(new DriveBackwardByTime(2000,0.8));
-    	addSequential(new Sleep(2000));
+    	addSequential(new DriveByDistanceInInch(120, 0.8, true));
+    	addSequential(new StopChassis());
+    	addSequential(new Sleep(5000));
     }
 }

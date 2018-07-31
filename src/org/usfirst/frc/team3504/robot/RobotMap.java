@@ -29,7 +29,7 @@ public class RobotMap {
 	public static WPI_TalonSRX chassisSlaveRightA;
 	public static WPI_TalonSRX chassisSlaveRightB;
 
-	public static final double WHEEL_DIAMETER = 1;
+	public static final double WHEEL_DIAMETER = 6.25;
 	
 	//Encoder
 	public static final int ENCODER_LEFT_1 = 0;
@@ -39,6 +39,7 @@ public class RobotMap {
 	
 	//CLimber
 	public static final int CLIMBER = 8;
+	public static final int LIMIT_SWITCH = 9;
 	
 	//Intake
 	public static WPI_TalonSRX leftIntake;
