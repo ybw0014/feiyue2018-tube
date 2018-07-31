@@ -42,20 +42,19 @@ public class OI {
 		jbutton11 = new JoystickButton(joyStick, 11);
 		jbutton12 = new JoystickButton(joyStick, 12);
 		
-		//gbutton1.whenPressed(new StopChassis());
+		gbutton1.whenPressed(new OpenIntake());
+		gbutton4.whenPressed(new ShootIntake());
 		
 		gbutton2.whenPressed(new OpenPneumatic());
 		gbutton3.whenPressed(new ClosePneumatic());
-		
-		gbutton4.whenPressed(new StopChassis());
 		
 		gbutton5.whenPressed(new LiftUp());
 		gbutton5.whenReleased(new LiftStop());
 		gbutton7.whenPressed(new LiftDown());
 		gbutton7.whenReleased(new LiftStop());
 		
-		gbutton6.whenPressed(new OpenIntake());
-		gbutton8.whenPressed(new ShootIntake());
+		gbutton6.whenPressed(new ClimbUp());
+		gbutton8.whenPressed(new ClimbDown());
 		
 		
 		jbutton1.whenPressed(new OpenPneumatic());
@@ -69,7 +68,8 @@ public class OI {
 		jbutton3.whenPressed(new OpenIntake());
 		jbutton5.whenPressed(new ShootIntake());
 		
-		jbutton11.whenPressed(new StopChassis());
+		jbutton11.whenPressed(new ClimbUp());
+		jbutton12.whenPressed(new ClimbDown());
 	}
 	public Joystick getGamePad() {
 		return this.gamePad; 
