@@ -11,13 +11,6 @@ public class RobotMap {
 	public static final int JOYSTICK_PORT = 1;
 	
 	//Solenoid
-	//DEBUG
-	/*
-	public static final int SOLENOID_FORWARD_CHANNEL = 0;
-	public static final int SOLENOID_BACKWARD_CHANNEL = 1;
-	 */
-	//NORMAL
-	
 	public static final int PNEUMATIC_FORWARD_CHANNEL = 6;
 	public static final int PNEUMATIC_BACKWARD_CHANNEL = 7;
 	
@@ -39,7 +32,6 @@ public class RobotMap {
 	
 	//CLimber
 	public static final int CLIMBER = 8;
-	public static final int LIMIT_SWITCH = 9;
 	
 	//Lift
 	public static final int LIFT = 9;
