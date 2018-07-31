@@ -61,7 +61,7 @@ public class DriveByDistanceInInch extends Command{
 
     @Override
     protected void end() {
-    	Robot.chassis.stop();
+    	Robot.chassis.stop(); 
     }
 
     @Override

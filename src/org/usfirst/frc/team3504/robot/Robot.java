@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
 		solenoid = new Solenoid();
 		climber = new Climber();
 		intake = new Intake();
-		lift = new Lift();
+		lift = new Lift(); 
 
 		oi = new OI();
 		chooser.addDefault("Default Auto", new AutonomousCommands());

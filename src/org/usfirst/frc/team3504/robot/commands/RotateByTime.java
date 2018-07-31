@@ -28,7 +28,7 @@ public class RotateByTime extends Command{
     protected boolean isFinished() {
         return (System.currentTimeMillis() - this.startTime) >= this.time;
     }
-
+ 
     @Override
     protected void end() {
     	Robot.chassis.stop();

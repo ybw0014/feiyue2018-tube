@@ -25,7 +25,7 @@ public class OpenPneumatic extends Command {
     }
 
     protected void interrupted() {
-    	end();
+    	end(); 
     }
 	
 }

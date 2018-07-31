@@ -50,7 +50,7 @@ public class Chassis extends Subsystem implements PIDOutput{
     	masterRight.setSafetyEnabled(false);
     	slaveRightA.setSafetyEnabled(false);
     	slaveRightB.setSafetyEnabled(false);
-    	
+    	 
     	//reverse();
     	this.setInvert(false,false);
     	

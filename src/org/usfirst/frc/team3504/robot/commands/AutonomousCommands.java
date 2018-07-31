@@ -10,7 +10,7 @@ public class AutonomousCommands extends CommandGroup {
         //      addSequential(new Command2());
         
     	addSequential(new DriveByDistanceInInch(120, 0.8, true));
-    	addSequential(new StopChassis());
+    	addSequential(new StopChassis()); 
     	addSequential(new Sleep(5000));
     }
 }

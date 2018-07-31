@@ -54,7 +54,7 @@ public class Lift extends Subsystem {
 		else
 			goalLiftPosition = goalPosition;
 	}
-	
+	 
 	public void setLiftSpeed(double speed) {
 		lift.set(speed);
 	}

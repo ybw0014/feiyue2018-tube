@@ -26,7 +26,7 @@ public class ClosePneumatic extends Command {
     }
 
     protected void interrupted() {
-    	end();
+    	end(); 
     }
 	
 }

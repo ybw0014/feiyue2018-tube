@@ -13,7 +13,7 @@ public class ClimbDown extends Command {
     public ClimbDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.climber);
+    	requires(Robot.climber); 
     	this.speed = 0.8;
     }
 

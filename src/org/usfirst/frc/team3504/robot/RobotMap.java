@@ -42,7 +42,7 @@ public class RobotMap {
 	
 	//Lift
 	public static final int LIFT = 9;
-	public static final int LIMIT_SWITCH = 10;
+	public static final int LIMIT_SWITCH = 10; 
 	
 	//Intake
 	public static WPI_TalonSRX leftIntake;

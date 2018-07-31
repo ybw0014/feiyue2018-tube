@@ -37,7 +37,7 @@ public class Intake extends Subsystem {
     public void ShootIntake() {
     	leftIntakeMotor.set(rotationSpeedOfIntake);
     	rightIntakeMotor.set(-rotationSpeedOfIntake);
-    }
+    } 
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
