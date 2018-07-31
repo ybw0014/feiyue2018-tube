@@ -1,29 +1,24 @@
 package org.usfirst.frc.team3504.robot.commands;
 
 import org.usfirst.frc.team3504.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class LiftDown extends Command {
 
-	private double speed;
     public LiftDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.climber);
-    	this.speed = 0.8;
+    	requires(Robot.lift);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.climber.climb(-speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.lift.holdPosition();
+    	Robot.lift.liftDown();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -33,7 +28,7 @@ public class LiftDown extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.climber.stopClimb();
+    	Robot.lift.liftStop();
     }
 
     // Called when another command which requires one or more of the same

@@ -10,7 +10,7 @@ public class Intake extends Subsystem {
 
 	private final WPI_TalonSRX leftIntakeMotor = RobotMap.leftIntake;
 	private final WPI_TalonSRX rightIntakeMotor = RobotMap.rightIntake;
-    public double rotationSpeedOfIntake = 0.2; // change this when a better speed is tested
+    public double rotationSpeedOfIntake = 0.5; // change this when a better speed is tested
     
     public Intake() {
     	leftIntakeMotor.setNeutralMode(NeutralMode.Brake);
@@ -31,11 +31,11 @@ public class Intake extends Subsystem {
     
     public void OpenIntake() {
     	leftIntakeMotor.set(rotationSpeedOfIntake);
-    	rightIntakeMotor.set(rotationSpeedOfIntake);
+    	rightIntakeMotor.set(-rotationSpeedOfIntake);
     }
     
     public void ShootIntake() {
-    	leftIntakeMotor.set(-rotationSpeedOfIntake);
+    	leftIntakeMotor.set(rotationSpeedOfIntake);
     	rightIntakeMotor.set(-rotationSpeedOfIntake);
     }
     

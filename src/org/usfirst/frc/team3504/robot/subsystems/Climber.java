@@ -4,12 +4,9 @@ import org.usfirst.frc.team3504.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
- */
 public class Climber extends Subsystem {
 
     // Put methods for controlling this subsystem
@@ -22,6 +19,7 @@ public class Climber extends Subsystem {
 		
 		climbMotor.setNeutralMode(NeutralMode.Brake);
 		climbMotor.configContinuousCurrentLimit(200, 10);
+		//climbMotor.setInverted(true);
 		
 		climbMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 		climbMotor.setSensorPhase(true);
@@ -39,7 +37,6 @@ public class Climber extends Subsystem {
 	public void stopClimb() {
 		climbMotor.set(0.0);
 	}
-	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

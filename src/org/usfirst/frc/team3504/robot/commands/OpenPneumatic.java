@@ -1,9 +1,7 @@
 package org.usfirst.frc.team3504.robot.commands;
 
 import org.usfirst.frc.team3504.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
-
 
 public class OpenPneumatic extends Command {
 	
@@ -27,6 +25,7 @@ public class OpenPneumatic extends Command {
     }
 
     protected void interrupted() {
+    	end();
     }
 	
 }

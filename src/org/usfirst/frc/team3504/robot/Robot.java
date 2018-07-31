@@ -17,6 +17,7 @@ public class Robot extends TimedRobot {
 	public static Solenoid solenoid;
 	public static Climber climber;
 	public static Intake intake;
+	public static Lift lift;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -34,6 +35,7 @@ public class Robot extends TimedRobot {
 		solenoid = new Solenoid();
 		climber = new Climber();
 		intake = new Intake();
+		lift = new Lift();
 
 		oi = new OI();
 		chooser.addDefault("Default Auto", new AutonomousCommands());
