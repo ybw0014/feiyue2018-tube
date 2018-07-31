@@ -16,6 +16,7 @@ public class OI {
 		gamePad = new Joystick(RobotMap.GAMEPAD_PORT);
 		joyStick = new Joystick(RobotMap.JOYSTICK_PORT);
 		
+		if(gamePad != null) {
 		gbutton1 = new JoystickButton(gamePad, 1); 
 		gbutton2 = new JoystickButton(gamePad, 2);
 		gbutton3 = new JoystickButton(gamePad, 3);
@@ -28,7 +29,9 @@ public class OI {
 		gbutton10 = new JoystickButton(gamePad, 10);
 		gbutton11 = new JoystickButton(gamePad, 11);
 		gbutton12 = new JoystickButton(gamePad, 12);
+		}
 		
+		if(joyStick != null) {
 		jbutton1 = new JoystickButton(joyStick, 1); 
 		jbutton2 = new JoystickButton(joyStick, 2);
 		jbutton3 = new JoystickButton(joyStick, 3);
@@ -41,7 +44,9 @@ public class OI {
 		jbutton10 = new JoystickButton(joyStick, 10);
 		jbutton11 = new JoystickButton(joyStick, 11);
 		jbutton12 = new JoystickButton(joyStick, 12);
+		}
 		
+		if(gamePad != null) {
 		gbutton1.whenPressed(new OpenIntake());
 		gbutton4.whenPressed(new ShootIntake());
 		
@@ -55,8 +60,9 @@ public class OI {
 		
 		gbutton6.whenPressed(new ClimbUp());
 		gbutton8.whenPressed(new ClimbDown());
+		}
 		
-		
+		if(joyStick != null) {
 		jbutton1.whenPressed(new OpenPneumatic());
 		jbutton2.whenPressed(new ClosePneumatic());
 		
@@ -70,6 +76,7 @@ public class OI {
 		
 		jbutton11.whenPressed(new ClimbUp());
 		jbutton12.whenPressed(new ClimbDown());
+		}
 	}
 	public Joystick getGamePad() {
 		return this.gamePad; 

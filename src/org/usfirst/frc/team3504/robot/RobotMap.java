@@ -2,8 +2,6 @@ package org.usfirst.frc.team3504.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.Encoder;
-
 public class RobotMap {
 	
 	//JoyStick
@@ -22,13 +20,7 @@ public class RobotMap {
 	public static WPI_TalonSRX chassisSlaveRightA;
 	public static WPI_TalonSRX chassisSlaveRightB;
 
-	public static final double WHEEL_DIAMETER = 6.25;
-	
-	//Encoder
-	public static final int ENCODER_LEFT_1 = 0;
-	public static final int ENCODER_LEFT_2 = 0;
-	public static final int ENCODER_RIGHT_1 = 0;
-	public static final int ENCODER_RIGHT_2 = 0;
+	public static final double WHEEL_DIAMETER = 6.28;
 	
 	//CLimber
 	public static final int CLIMBER = 8;
