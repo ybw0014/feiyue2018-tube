@@ -23,11 +23,11 @@ public class RobotMap {
 	public static final double WHEEL_DIAMETER = 6.28;
 	
 	//CLimber
-	public static final int CLIMBER = 8;
+	public static final int CLIMBER = 10;
 	
 	//Lift
-	public static final int LIFT = 9;
-	public static final int LIMIT_SWITCH = 10; 
+	public static final int LIFT = 7;
+	public static final int LIMIT_SWITCH = 8; 
 	
 	//Intake
 	public static WPI_TalonSRX leftIntake;
@@ -41,7 +41,7 @@ public class RobotMap {
 		chassisSlaveRightA = new WPI_TalonSRX(2);
 		chassisSlaveRightB = new WPI_TalonSRX(4);
 		
-		leftIntake = new WPI_TalonSRX(9);
-		rightIntake = new WPI_TalonSRX(10);
+		leftIntake = new WPI_TalonSRX(11);
+		rightIntake = new WPI_TalonSRX(9);
 	}
 }

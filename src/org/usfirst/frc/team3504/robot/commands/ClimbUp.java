@@ -14,7 +14,7 @@ public class ClimbUp extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.climber);
-    	this.speed = 0.8;
+    	this.speed = 0.7;
     }
 
     // Called just before this Command runs the first time
