@@ -39,6 +39,7 @@ public class RobotMap {
 	
 	//CLimber
 	public static final int CLIMBER = 8;
+	public static final int LIMIT_SWITCH = 9;
 	
 	//Lift
 	public static final int LIFT = 9;
