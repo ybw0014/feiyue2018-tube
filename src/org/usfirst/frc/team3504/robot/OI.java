@@ -3,58 +3,75 @@ package org.usfirst.frc.team3504.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
 import org.usfirst.frc.team3504.robot.commands.*;
 
-
 public class OI {
-	private Joystick drivingStick;
+	private Joystick gamePad;
+	private Joystick joyStick;
 	
-	private Button button1;
-	private Button button2;
-	private Button button3;
-	private Button button4;
-	private Button button5;
-	private Button button6;
-	private Button button7;
-	private Button button8;
-	private Button button9;
-	private Button button10;
-	private Button button11;
-	private Button button12;
+	private Button gbutton1,gbutton2,gbutton3,gbutton4,gbutton5,gbutton6,gbutton7,gbutton8,gbutton9,gbutton10,gbutton11,gbutton12;
+	private Button jbutton1,jbutton2,jbutton3,jbutton4,jbutton5,jbutton6,jbutton7,jbutton8,jbutton9,jbutton10,jbutton11,jbutton12;
 	
 	public OI() {
-		drivingStick = new Joystick(RobotMap.JOYSTICK_PORT);
+		gamePad = new Joystick(RobotMap.GAMEPAD_PORT);
+		joyStick = new Joystick(RobotMap.JOYSTICK_PORT);
 		
-		button1 = new JoystickButton(drivingStick, 1); 
-		button2 = new JoystickButton(drivingStick, 2);
-		button3 = new JoystickButton(drivingStick, 3);
-		button4 = new JoystickButton(drivingStick, 4);
-		button5 = new JoystickButton(drivingStick, 5);
-		button6 = new JoystickButton(drivingStick, 6);
-		button7 = new JoystickButton(drivingStick, 7);
-		button8 = new JoystickButton(drivingStick, 8);
-		button9 = new JoystickButton(drivingStick, 9);
-		button10 = new JoystickButton(drivingStick, 10);
-		button11 = new JoystickButton(drivingStick, 11);
-		button12 = new JoystickButton(drivingStick, 12);
+		gbutton1 = new JoystickButton(gamePad, 1); 
+		gbutton2 = new JoystickButton(gamePad, 2);
+		gbutton3 = new JoystickButton(gamePad, 3);
+		gbutton4 = new JoystickButton(gamePad, 4);
+		gbutton5 = new JoystickButton(gamePad, 5);
+		gbutton6 = new JoystickButton(gamePad, 6);
+		gbutton7 = new JoystickButton(gamePad, 7);
+		gbutton8 = new JoystickButton(gamePad, 8);
+		gbutton9 = new JoystickButton(gamePad, 9);
+		gbutton10 = new JoystickButton(gamePad, 10);
+		gbutton11 = new JoystickButton(gamePad, 11);
+		gbutton12 = new JoystickButton(gamePad, 12);
 		
-		button1.whenPressed(new StopChassis());
+		jbutton1 = new JoystickButton(joyStick, 1); 
+		jbutton2 = new JoystickButton(joyStick, 2);
+		jbutton3 = new JoystickButton(joyStick, 3);
+		jbutton4 = new JoystickButton(joyStick, 4);
+		jbutton5 = new JoystickButton(joyStick, 5);
+		jbutton6 = new JoystickButton(joyStick, 6);
+		jbutton7 = new JoystickButton(joyStick, 7);
+		jbutton8 = new JoystickButton(joyStick, 8);
+		jbutton9 = new JoystickButton(joyStick, 9);
+		jbutton10 = new JoystickButton(joyStick, 10);
+		jbutton11 = new JoystickButton(joyStick, 11);
+		jbutton12 = new JoystickButton(joyStick, 12);
 		
-		button2.whenPressed(new OpenPneumatic());
-		button3.whenPressed(new ClosePneumatic());
+		gbutton1.whenPressed(new StopChassis());
 		
-		button4.whenPressed(new StopChassis());
+		gbutton2.whenPressed(new OpenPneumatic());
+		gbutton3.whenPressed(new ClosePneumatic());
 		
-		button5.whenPressed(new LiftUp());
-		button5.whenReleased(new LiftStop());
-		button7.whenPressed(new LiftDown());
-		button7.whenReleased(new LiftStop());
+		gbutton4.whenPressed(new StopChassis());
+		
+		gbutton5.whenPressed(new LiftUp());
+		gbutton5.whenReleased(new LiftStop());
+		gbutton7.whenPressed(new LiftDown());
+		gbutton7.whenReleased(new LiftStop());
+		
+		gbutton6.whenPressed(new OpenIntake());
+		gbutton8.whenPressed(new ShootIntake());
 		
 		
+		jbutton1.whenPressed(new OpenPneumatic());
+		jbutton2.whenPressed(new ClosePneumatic());
+		
+		jbutton4.whenPressed(new LiftUp());
+		jbutton4.whenReleased(new LiftStop());
+		jbutton6.whenPressed(new LiftDown());
+		jbutton6.whenReleased(new LiftStop());
 	}
+	public Joystick getGamePad() {
+		return this.gamePad;
+	}
+	
 	public Joystick getJoyStick() {
-		return this.drivingStick;
+		return this.joyStick;
 	}
 	
 }

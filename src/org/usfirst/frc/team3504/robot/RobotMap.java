@@ -7,7 +7,8 @@ import edu.wpi.first.wpilibj.Encoder;
 public class RobotMap {
 	
 	//JoyStick
-	public static final int JOYSTICK_PORT = 0;
+	public static final int GAMEPAD_PORT = 0;
+	public static final int JOYSTICK_PORT = 1;
 	
 	//Solenoid
 	//DEBUG
