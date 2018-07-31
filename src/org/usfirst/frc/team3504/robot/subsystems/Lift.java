@@ -20,7 +20,7 @@ public class Lift extends Subsystem {
 	
 	public Lift() {
 		lift = new WPI_TalonSRX(RobotMap.LIFT);
-		limitSwitch = new DigitalInput(RobotMap.LIMIT_SWITCH);
+		//limitSwitch = new DigitalInput(RobotMap.LIMIT_SWITCH);
 		
 		lift.setInverted(true);
 		lift.setSensorPhase(true);

@@ -59,7 +59,9 @@ public class OI {
 		gbutton7.whenReleased(new LiftStop());
 		
 		gbutton6.whenPressed(new ClimbUp());
+		gbutton6.whenReleased(new ClimbStop());
 		gbutton8.whenPressed(new ClimbDown());
+		gbutton8.whenReleased(new ClimbStop());
 		}
 		
 		if(joyStick != null) {
@@ -75,7 +77,9 @@ public class OI {
 		jbutton5.whenPressed(new ShootIntake());
 		
 		jbutton11.whenPressed(new ClimbUp());
+		jbutton11.whenReleased(new ClimbStop());
 		jbutton12.whenPressed(new ClimbDown());
+		jbutton12.whenReleased(new ClimbStop());
 		}
 	}
 	public Joystick getGamePad() {
