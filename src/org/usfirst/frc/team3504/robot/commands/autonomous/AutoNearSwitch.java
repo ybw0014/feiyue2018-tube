@@ -2,17 +2,14 @@ package org.usfirst.frc.team3504.robot.commands.autonomous;
 
 import org.usfirst.frc.team3504.robot.GameData.*;
 import org.usfirst.frc.team3504.robot.commands.*;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutoNearSwitch extends CommandGroup{
-		private final double DISTANCE_FORWARD = 130.0;
+	private final double DISTANCE_FORWARD = 130.0;
 	private final double DISTANCE_SIDE = 0.0;
 	private final double BACK_UP = -30;
 	
 	public AutoNearSwitch(FieldSide robotPosition) {
-	    System.out.println("AutoNearSwitch starting");
-	    
 	    // get lift to position
 	    addSequential(new LiftToSwitch());
 	    
@@ -29,7 +26,6 @@ public class AutoNearSwitch extends CommandGroup{
 
     	// put lift down
     	addSequential(new LiftDown());
-    	
-	 }
+ 
 	}
 }

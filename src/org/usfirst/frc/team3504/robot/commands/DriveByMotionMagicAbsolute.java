@@ -45,7 +45,7 @@ public class DriveByMotionMagicAbsolute extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	time = 0;
-    	Robot.chassis.setInverted(true);
+    	Robot.chassis.reverseAll();
     	//System.out.println("DriveByMotionMagicAbsolute: motors inverted");
     	
     	Robot.chassis.configForMotionMagic();

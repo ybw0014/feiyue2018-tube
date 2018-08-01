@@ -5,9 +5,6 @@ import org.usfirst.frc.team3504.robot.commands.DriveByMotionMagic;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
 public class AutoTurnLeft extends CommandGroup {
 
     public AutoTurnLeft(double inches) {

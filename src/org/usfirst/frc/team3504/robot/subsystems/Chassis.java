@@ -8,9 +8,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.FollowerType;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.*;
+import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
@@ -32,6 +31,15 @@ public class Chassis extends Subsystem implements PIDOutput{
     
     private Encoder leftEncoder;
     private Encoder rightEncoder;
+    
+    public final static int REMOTE_ENCODER = 0;
+	public final static int REMOTE_PIGEON = 1;
+	public final static int PID_DISTANCE = 0;
+	public final static int PID_TURNING = 1;
+	public final static int SLOT_DISTANCE = 0;
+	public final static int SLOT_TURNING = 1;
+	public final static double TURN_UNITS_PER_ROTATION = 3600;
+	public final static int PIGEON_UNITS_PER_ROTATION = 8192;
 
 
     public Chassis() {
@@ -215,11 +223,6 @@ public class Chassis extends Subsystem implements PIDOutput{
 		System.out.println("Chassis: Encoders are zeroed.");
 	}
 	
-	public double getYaw() {
-		double[] imuData = new double[3];
-		pigeonIMU.getYawPitchRoll(imuData);
-		return imuData[0];
-	}
     
 	public void configForMotionMagic() {
 		masterLeft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_DISTANCE, 10);
