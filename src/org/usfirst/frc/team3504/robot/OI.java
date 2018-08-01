@@ -42,44 +42,25 @@ public class OI {
 		jbutton11 = new JoystickButton(joyStick, 11);
 		jbutton12 = new JoystickButton(joyStick, 12);
 		
-		//gbutton1.whenPressed(new OpenIntake());
-		//gbutton4.whenPressed(new ShootIntake());
+		gbutton2.whenPressed(new OpenPneumatic()); //green
+		gbutton3.whenPressed(new ClosePneumatic()); //red
 		
-		gbutton2.whenPressed(new OpenPneumatic());
-		gbutton3.whenPressed(new ClosePneumatic());
+		gbutton10.whenPressed(new StopChassis()); //start
 		
-		gbutton10.whenPressed(new StopChassis());
-		/*
-		gbutton5.whenPressed(new LiftUp());
-		gbutton5.whenReleased(new LiftStop());
-		gbutton7.whenPressed(new LiftDown());
-		gbutton7.whenReleased(new LiftStop());
-		
-		gbutton6.whenPressed(new ClimbUp());
-		gbutton6.whenReleased(new ClimbStop());
-		gbutton8.whenPressed(new ClimbDown());
-		gbutton8.whenReleased(new ClimbStop());
-		*/
-		
-		//jbutton1.whenPressed(new OpenPneumatic());
-		//jbutton2.whenPressed(new ClosePneumatic());
-		
-		jbutton5.whenPressed(new LiftUp());
+		jbutton5.whenPressed(new LiftUp()); //left top
 		jbutton5.whenReleased(new LiftStop());
-		jbutton7.whenPressed(new LiftDown());
+		jbutton7.whenPressed(new LiftDown()); //left bottom
 		jbutton7.whenReleased(new LiftStop());
 		
-		jbutton2.whenPressed(new CollectCube());
-		jbutton2.whenReleased(new CollectorStop());
-		jbutton3.whenPressed(new ReleaseCollector());
+		jbutton2.whenPressed(new CollectCube()); //green
+		jbutton2.whenReleased(new CollectorStop()); 
+		jbutton3.whenPressed(new ReleaseCollector()); //red
 		jbutton3.whenReleased(new CollectorStop());
 		
-		jbutton6.whenPressed(new ClimbUp());
+		jbutton6.whenPressed(new ClimbUp()); //right top
 		jbutton6.whenReleased(new ClimbStop());
-		jbutton8.whenPressed(new ClimbDown());
+		jbutton8.whenPressed(new ClimbDown()); //right buttom
 		jbutton8.whenReleased(new ClimbStop());
-		
-		//jbutton10.whenPressed(new ());
 		
 	}
 	public Joystick getGamePad() {

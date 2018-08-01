@@ -14,11 +14,11 @@ public class Solenoid extends Subsystem{
 	}
 	
 	public void openSolenoid() {
-		doublesolenoid.set(DoubleSolenoid.Value.kReverse);
+		doublesolenoid.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	public void closeSolenoid() {
-		doublesolenoid.set(DoubleSolenoid.Value.kForward);
+		doublesolenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	public void stop() {

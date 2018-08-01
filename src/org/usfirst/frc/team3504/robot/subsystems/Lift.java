@@ -18,7 +18,7 @@ public class Lift extends Subsystem {
 	private final int LIFT_MIN = 0;
 	private final int LIFT_ = 300;
 	
-	public static final double LIFT_SWITCH = 12500; //TODO tune
+	public static final double LIFT_SWITCH = 12500; 
 	
 	public Lift() {
 		lift = new WPI_TalonSRX(RobotMap.LIFT);

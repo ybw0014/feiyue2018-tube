@@ -40,7 +40,7 @@ public class Robot extends TimedRobot {
 		collector = new Collector();
 		lift = new Lift(); 
 		
-		gameData = new GameData();
+		//gameData = new GameData();
 
 		oi = new OI();
 		// chooser.addObject("My Auto", new MyAutoCommand());

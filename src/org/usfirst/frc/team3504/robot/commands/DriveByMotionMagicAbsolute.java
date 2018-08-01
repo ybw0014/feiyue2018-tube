@@ -75,13 +75,13 @@ public class DriveByMotionMagicAbsolute extends Command {
     		double error = Math.abs(encoderTicks - currentTicks);
     		if (error < DISTANCE_TIMER_THRESHOLD) timeoutCtr++;
     	}
-    	else //if trying to turn to an angle
+    	/*else //if trying to turn to an angle
     	{
     		double currentHeading = Robot.chassis.getYaw();
     		double error = Math.abs(targetHeading - currentHeading);
     		//System.out.println("DriveByMotionMagicAbsolute: turning error = " + error);
     		if (error < TURNING_TIMER_THRESHOLD) timeoutCtr++;
-    	}
+    	}*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -104,7 +104,7 @@ public class DriveByMotionMagicAbsolute extends Command {
     		}
     		else return false;
     	}
-    	else //if trying to turn to an angle
+    	/*else //if trying to turn to an angle
     	{
     		double currentHeading = Robot.chassis.getYaw();
     		double error = Math.abs(targetHeading - currentHeading);
@@ -115,8 +115,9 @@ public class DriveByMotionMagicAbsolute extends Command {
         		return true;
     		}
     		else return false;
-    	}
-    	
+    	}*/
+    	return true;
+    			
     }
 
     // Called once after isFinished returns true
@@ -125,12 +126,12 @@ public class DriveByMotionMagicAbsolute extends Command {
     	double currentTicks = rightTalon.getSensorCollection().getQuadraturePosition();
 		double ticksError = Math.abs(encoderTicks - currentTicks);
 		double inches = (ticksError / RobotMap.CODES_PER_WHEEL_REV) * (RobotMap.WHEEL_DIAMETER * Math.PI);
-		double currentHeading = Robot.chassis.getYaw();
+		/*double currentHeading = Robot.chassis.getYaw();
 		double degreesError = Math.abs(targetHeading - currentHeading);
     	
     	System.out.println("DriveByMotionMagicAbsolute: ended. Error = " + inches/2 + " inches, " + degreesError + " degrees, " + time + " seconds");
     	Robot.chassis.stop();
-    	Robot.chassis.setInverted(false);
+    	Robot.chassis.setInverted(false);*/
     }
 
     // Called when another command which requires one or more of the same

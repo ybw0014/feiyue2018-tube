@@ -67,7 +67,7 @@ public class Chassis extends Subsystem implements PIDOutput{
     	slaveRightA.follow(masterRight, FollowerType.PercentOutput);
     	slaveRightB.follow(masterRight, FollowerType.PercentOutput);
     	
-    	this.setInvert(false,true); //uncomment if needed
+    	this.setInvert(false,false); //uncomment if needed
     	//if needed to invert the talons, do before putting into the drive
     	
     	drive = new DifferentialDrive(masterLeft, masterRight);
