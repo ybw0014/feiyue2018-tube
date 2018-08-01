@@ -16,7 +16,7 @@ public class Lift extends Subsystem {
 	
 	private final int LIFT_MAX = 30000;
 	private final int LIFT_MIN = 0;
-	private final int LIFT_ = 300;
+	private final int LIFT_ = 400;
 	
 	public static final double LIFT_SWITCH = 12500; 
 	
@@ -24,6 +24,7 @@ public class Lift extends Subsystem {
 		lift = new WPI_TalonSRX(RobotMap.LIFT);
 		//limitSwitch = new DigitalInput(RobotMap.LIMIT_SWITCH);
 		
+		lift.setNeutralMode(NeutralMode.Brake);
 		lift.setInverted(true);
 		lift.setSensorPhase(true);
 		lift.configAllowableClosedloopError(0, 100, 0);
@@ -39,7 +40,7 @@ public class Lift extends Subsystem {
 		goalLiftPosition = 0;
 	}
 	
-	public void liftUp() {
+	public void setPosUp() {
 		double goalPosition = goalLiftPosition + LIFT_;
 		if (goalPosition >= LIFT_MAX)
 			goalLiftPosition = LIFT_MAX;
@@ -47,7 +48,7 @@ public class Lift extends Subsystem {
 			goalLiftPosition = goalPosition;
 	}
 	
-	public void liftDown() {
+	public void setPosDown() {
 		double goalPosition = goalLiftPosition - LIFT_;
 		if (goalPosition <= LIFT_MIN)
 			goalLiftPosition = LIFT_MIN;
@@ -60,6 +61,10 @@ public class Lift extends Subsystem {
 	}
 	public void liftStop() {
 		lift.stopMotor();
+	}
+	
+	public boolean isInPos() {
+		return lift.getSelectedSensorPosition(0) == goalLiftPosition;
 	}
 
 	public void holdPosition() {

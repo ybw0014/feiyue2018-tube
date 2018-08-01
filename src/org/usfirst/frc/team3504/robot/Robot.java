@@ -31,12 +31,11 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		DriverStation.reportWarning("Initialzing.", false);
 		RobotMap.init();
 		
 		chassis = new Chassis();
 		solenoid = new Solenoid();
-		//climber = new Climber();
+		climber = new Climber();
 		collector = new Collector();
 		lift = new Lift(); 
 		
@@ -46,7 +45,6 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		
-		DriverStation.reportWarning("Program has initialized.", false);
 	}
 
 	/**
@@ -56,7 +54,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		DriverStation.reportWarning("Program has stopped running.", false);
+
 	}
 
 	@Override

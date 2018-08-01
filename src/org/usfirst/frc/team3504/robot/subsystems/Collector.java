@@ -9,7 +9,7 @@ public class Collector extends Subsystem {
 
 	private final WPI_TalonSRX leftIntakeMotor = RobotMap.leftIntake;
 	private final WPI_TalonSRX rightIntakeMotor = RobotMap.rightIntake;
-    public double rotationSpeedOfIntake = 0.4; // change this when a better speed is tested
+    public double rotationSpeedOfIntake = 0.7; // change this when a better speed is tested
     
     public Collector() {
     	leftIntakeMotor.setNeutralMode(NeutralMode.Brake);
