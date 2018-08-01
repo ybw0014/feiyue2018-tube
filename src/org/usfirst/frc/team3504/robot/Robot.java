@@ -18,7 +18,7 @@ public class Robot extends TimedRobot {
 	public static Chassis chassis;
 	public static Solenoid solenoid;
 	public static Climber climber;
-	public static Intake intake;
+	public static Collector collector;
 	public static Lift lift;
 	public static GameData gameData;
 
@@ -37,7 +37,7 @@ public class Robot extends TimedRobot {
 		chassis = new Chassis();
 		solenoid = new Solenoid();
 		climber = new Climber();
-		intake = new Intake();
+		collector = new Collector();
 		lift = new Lift(); 
 		
 		gameData = new GameData();

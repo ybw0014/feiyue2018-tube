@@ -3,10 +3,10 @@ package org.usfirst.frc.team3504.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3504.robot.Robot;
 
-public class OpenIntake extends Command {
+public class ReleaseCollector extends Command {
 	
-    public OpenIntake() {
-    	requires(Robot.intake);
+    public ReleaseCollector() {
+    	requires(Robot.collector);
     }
 
     // Called just before this Command runs the first time
@@ -14,8 +14,9 @@ public class OpenIntake extends Command {
     	
     }
 
+    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.OpenIntake();
+    	Robot.collector.releaseCollector();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -25,12 +26,13 @@ public class OpenIntake extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.intake.stop();
+    	Robot.collector.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end(); 
+    	end();
     }
 }
+ 

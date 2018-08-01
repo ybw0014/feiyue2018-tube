@@ -69,8 +69,8 @@ public class OI {
 		jbutton7.whenPressed(new LiftDown());
 		jbutton7.whenReleased(new LiftStop());
 		
-		jbutton2.whenPressed(new OpenIntake());
-		jbutton3.whenPressed(new ShootIntake());
+		jbutton2.whenPressed(new CollectCube());
+		jbutton3.whenPressed(new ReleaseCollector());
 		
 		jbutton6.whenPressed(new ClimbUp());
 		jbutton6.whenReleased(new ClimbStop());

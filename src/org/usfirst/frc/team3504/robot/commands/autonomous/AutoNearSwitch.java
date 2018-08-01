@@ -20,7 +20,7 @@ public class AutoNearSwitch extends CommandGroup{
     	addSequential(new DriveByMotionMagic(DISTANCE_SIDE, 0));
     	
     	//release and back up
-    	addSequential(new ShootIntake());
+    	addSequential(new ReleaseCollector());
     	addSequential(new Sleep(10));
     	addSequential(new DriveByMotionMagic(BACK_UP, 0));
 

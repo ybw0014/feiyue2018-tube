@@ -6,13 +6,13 @@ import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.*;
 
-public class Intake extends Subsystem {
+public class Collector extends Subsystem {
 
 	private final WPI_TalonSRX leftIntakeMotor = RobotMap.leftIntake;
 	private final WPI_TalonSRX rightIntakeMotor = RobotMap.rightIntake;
     public double rotationSpeedOfIntake = 0.5; // change this when a better speed is tested
     
-    public Intake() {
+    public Collector() {
     	leftIntakeMotor.setNeutralMode(NeutralMode.Brake);
     	leftIntakeMotor.configContinuousCurrentLimit(1000, 20);
     	rightIntakeMotor.setNeutralMode(NeutralMode.Brake);
@@ -29,12 +29,12 @@ public class Intake extends Subsystem {
     	rightIntakeMotor.stopMotor();
     }
     
-    public void OpenIntake() {
+    public void releaseCollector() {
     	leftIntakeMotor.set(rotationSpeedOfIntake);
     	rightIntakeMotor.set(-rotationSpeedOfIntake);
     }
     
-    public void ShootIntake() {
+    public void collectCube() {
     	leftIntakeMotor.set(rotationSpeedOfIntake);
     	rightIntakeMotor.set(-rotationSpeedOfIntake);
     } 
