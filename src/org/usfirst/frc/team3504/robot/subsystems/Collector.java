@@ -34,7 +34,7 @@ public class Collector extends Subsystem {
     }
     
     public void collectCube() {
-    	leftIntakeMotor.set(-rotationSpeedOfIntake);
+    	leftIntakeMotor.set(rotationSpeedOfIntake);
     	rightIntakeMotor.set(rotationSpeedOfIntake);
     } 
     

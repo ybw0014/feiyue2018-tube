@@ -16,15 +16,18 @@ public class Lift extends Subsystem {
 	
 	private final int LIFT_MAX = 30000;
 	private final int LIFT_MIN = 0;
-	private final int LIFT_ = 400;
+	private final int LIFT_CHANGE = 400;
 	
 	public static final double LIFT_SWITCH = 12500; 
+	public static final double LIFT_SCALE = 2147483647.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
 	
 	public Lift() {
 		lift = new WPI_TalonSRX(RobotMap.LIFT);
 		//limitSwitch = new DigitalInput(RobotMap.LIMIT_SWITCH);
 		
 		lift.setNeutralMode(NeutralMode.Brake);
+		lift.setSafetyEnabled(false);
+		
 		lift.setInverted(true);
 		lift.setSensorPhase(true);
 		lift.configAllowableClosedloopError(0, 100, 0);
@@ -33,7 +36,7 @@ public class Lift extends Subsystem {
 		lift.setSelectedSensorPosition(0);
 		
 		lift.config_kF(0, 0, 10);
-		lift.config_kP(0, 0.4, 10);
+		lift.config_kP(0, 0.35, 10);
 		lift.config_kI(0, 0, 10);
 		lift.config_kD(0, 0, 10);
 		
@@ -41,7 +44,7 @@ public class Lift extends Subsystem {
 	}
 	
 	public void setPosUp() {
-		double goalPosition = goalLiftPosition + LIFT_;
+		double goalPosition = goalLiftPosition + LIFT_CHANGE;
 		if (goalPosition >= LIFT_MAX)
 			goalLiftPosition = LIFT_MAX;
 		else
@@ -49,7 +52,7 @@ public class Lift extends Subsystem {
 	}
 	
 	public void setPosDown() {
-		double goalPosition = goalLiftPosition - LIFT_;
+		double goalPosition = goalLiftPosition - LIFT_CHANGE;
 		if (goalPosition <= LIFT_MIN)
 			goalLiftPosition = LIFT_MIN;
 		else
@@ -64,16 +67,12 @@ public class Lift extends Subsystem {
 	}
 	
 	public boolean isInPos() {
-		return lift.getSelectedSensorPosition(0) == goalLiftPosition;
+		return getGoalLiftPosition() == getLiftPosition();
 	}
 
 	public void holdPosition() {
 		lift.set(ControlMode.Position, goalLiftPosition);
 	}
-	
-	/*public boolean isAtBottom() {
-		return false;//return !limitSwitch.get();
-	}*/
 
 	public double getGoalLiftPosition() {
 		return goalLiftPosition;
@@ -89,6 +88,10 @@ public class Lift extends Subsystem {
 	
 	public void setLiftToSwitch() {
 		goalLiftPosition = LIFT_SWITCH;
+	}
+	
+	public void setToBottom() {
+		goalLiftPosition = 0;
 	}
 	
     public void initDefaultCommand() {

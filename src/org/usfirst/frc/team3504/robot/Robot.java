@@ -153,6 +153,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		System.out.println("LiftPosition: " + String.valueOf(Robot.lift.getLiftPosition()) + " GoalPosition: " + String.valueOf(Robot.lift.getGoalLiftPosition()));
 	}
 
 	/**

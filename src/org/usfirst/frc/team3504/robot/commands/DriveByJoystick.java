@@ -2,6 +2,7 @@ package org.usfirst.frc.team3504.robot.commands;
 
 import org.usfirst.frc.team3504.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveByJoystick extends Command{
 	public DriveByJoystick() {
@@ -16,6 +17,7 @@ public class DriveByJoystick extends Command{
     protected void execute() {
     	//left:Y X  right:Throttle Z
     	Robot.chassis.driveByJoystick(Robot.oi.getGamePad().getY(), Robot.oi.getGamePad().getZ());
+    	SmartDashboard.putString("driveByJoyStick:", "Y: " + Robot.oi.getGamePad().getY() + "X: " + Robot.oi.getGamePad().getZ());
     }
 
     @Override
