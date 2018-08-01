@@ -25,7 +25,8 @@ public class RobotMap {
 	public static final double CODES_PER_WHEEL_REV = 256.0 * (60.0 / 24.0) * (36.0 / 12.0) * 4;
 	
 	//CLimber
-	public static final int CLIMBER = 12;
+	public static final int CLIMBER_LEFT = 12;
+	public static final int CLIMBER_RIGHT = 13;
 	
 	//Lift
 	public static final int LIFT = 10;

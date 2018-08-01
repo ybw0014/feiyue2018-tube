@@ -17,8 +17,8 @@ public class LiftUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.lift.holdPosition();
     	Robot.lift.liftUp();
+    	Robot.lift.holdPosition();
     }
 
     // Make this return true when this Command no longer n eeds to run execute()

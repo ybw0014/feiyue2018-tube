@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
 		
 		chassis = new Chassis();
 		solenoid = new Solenoid();
-		climber = new Climber();
+		//climber = new Climber();
 		collector = new Collector();
 		lift = new Lift(); 
 		

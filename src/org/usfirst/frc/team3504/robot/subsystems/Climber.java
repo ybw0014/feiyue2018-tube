@@ -12,15 +12,38 @@ public class Climber extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-	private WPI_TalonSRX climbMotor;
+	private WPI_TalonSRX climberLeft;
+	private WPI_TalonSRX climberRight;
 	
 	public Climber() {
-		climbMotor = new WPI_TalonSRX(RobotMap.CLIMBER);
+		climberLeft = new WPI_TalonSRX(RobotMap.CLIMBER_LEFT);
+		climberRight = new WPI_TalonSRX(RobotMap.CLIMBER_RIGHT);
 		
-		climbMotor.setNeutralMode(NeutralMode.Brake);
-		climbMotor.configContinuousCurrentLimit(200, 10);
-		//climbMotor.setInverted(true);
+		climberLeft.setNeutralMode(NeutralMode.Brake);
+		climberLeft.configContinuousCurrentLimit(200, 10);
+		climberRight.setNeutralMode(NeutralMode.Brake);
+		climberRight.configContinuousCurrentLimit(200, 10);
 		
+		setInverted(false,false);
+		
+	}
+	
+	public void climb(double speed) {
+		climberLeft.set(speed);
+		climberRight.set(-speed);
+	}
+	 
+	public void stopClimb() {
+		climberLeft.stopMotor();
+		climberRight.stopMotor();
+	}
+	
+	public void setInverted(boolean left, boolean right) {
+		climberLeft.setInverted(left);
+		climberRight.setInverted(right);
+	}
+	
+	public void setDPIF(WPI_TalonSRX climbMotor) {
 		climbMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 		climbMotor.setSensorPhase(true);
 
@@ -28,14 +51,8 @@ public class Climber extends Subsystem {
 		climbMotor.config_kP(0, 0.5, 0);
 		climbMotor.config_kI(0, 0, 0);
 		climbMotor.config_kD(0, 0, 0);
-	}
 	
-	public void climb(double speed) {
-		climbMotor.set(speed);
-	}
-	 
-	public void stopClimb() {
-		climbMotor.set(0.0);
+		
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

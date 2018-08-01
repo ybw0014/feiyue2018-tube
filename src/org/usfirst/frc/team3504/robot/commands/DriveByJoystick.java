@@ -14,11 +14,8 @@ public class DriveByJoystick extends Command{
 
     @Override
     protected void execute() {
-    	
-    	//left controller
-    	Robot.chassis.driveByJoystick(Robot.oi.getGamePad().getY(), Robot.oi.getGamePad().getX());
-    	//right controller
-    	//Robot.chassis.driveByJoystick(Robot.oi.getJoyStick().getThrottle(), Robot.oi.getJoyStick().getZ());
+    	//left:Y X  right:Throttle Z
+    	Robot.chassis.driveByJoystick(Robot.oi.getGamePad().getY(), Robot.oi.getGamePad().getZ());
     }
 
     @Override
