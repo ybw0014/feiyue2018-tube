@@ -77,7 +77,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		gameData.reset();
 		
 		Robot.chassis.zeroSensors();
 		gameData.reset();
@@ -90,20 +89,19 @@ public class Robot extends TimedRobot {
 		//FieldSide scaleSide = gameData.getScaleSide();
 		//boolean scaleOverride = gameData.getScaleOverride();
 		
-		if(gameData.getNoAuto())
-		{
+		if(gameData.getNoAuto()) {
 			autonomousCommand = null;
 		}
-		else if(robotSide == FieldSide.left || robotSide == FieldSide.right) //if robot in the corner
+		else if(robotSide == FieldSide.left || robotSide == FieldSide.right) {//if robot in the corner
 			
-		{
+		
 			//Robot.shifters.shiftGear(Shifters.Speed.kHigh);
 
 			if (elementPriority == FieldElement.Switch) //switch priority
 			{
 				if (switchSide == robotSide) autonomousCommand = new AutoNearSwitch(switchSide);
-				//else if (scaleSide == robotSide) autonomousCommand = new AutoNearScale(scaleSide);
-				//else if (scaleOverride) autonomousCommand = new AutoFarScaleAbsolute(scaleSide);
+				//else if (scaleSide == robotSide) autonomousCommand = new AutoNearScale(switchSide);
+				//else if (scaleOverride) autonomousCommand = new AutoFarScaleAbsolute(switchSide);
 				else autonomousCommand = new AutoDriveToBaseline();
 			}
 			/*	scale priority - probably won't need this since we cannot do scale
@@ -111,19 +109,17 @@ public class Robot extends TimedRobot {
 			{
 				if (scaleSide == robotSide) autonomousCommand = new AutoNearScale(scaleSide);
 				else if (scaleOverride) autonomousCommand = new AutoFarScaleAbsolute(scaleSide);
-				else if (switchSide == robotSide) autonomousCommand = new AutoNearSwitch(switchSide);
+				else if (switchSide == robotSide) autonomousCommand = new AutoNearSwitch(scaleSide);
 				else autonomousCommand = new AutoDriveToBaseline();
 			}
 			*/
 		}
-		else if(robotSide == FieldSide.middle)
-		{
+		else if(robotSide == FieldSide.middle) {
 			//Robot.shifters.shiftGear(Shifters.Speed.kLow);
 			if (switchSide != FieldSide.bad) autonomousCommand = new AutoMiddleSwitch(switchSide);
 			else autonomousCommand = new AutoDriveToBaseline();
 		}
-		else 
-		{
+		else {
 			System.out.println("AutoInit: Robot field side from DIO ports invalid!!");
 			autonomousCommand = new AutoDriveToBaseline();
 		}

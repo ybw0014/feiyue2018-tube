@@ -36,11 +36,12 @@ public class RobotMap {
 	public static WPI_TalonSRX rightIntake;
 	
 	//DIO
-	public static final int DIO_INCHER = 0;
-	public static final int DIO_ = 1;
-	public static final int DIO_sad = 2;
-	public static final int DIO_sd = 3;
-	public static final int DIO_x = 4;
+	public static final int DIO_PRIORITY = 0;
+	public static final int DIO_LEFT = 1;
+	public static final int DIO_MIDDLE = 2;
+	public static final int DIO_RIGHT = 3;
+	public static final int DIO_SCALE_OVERRIDE = 4;
+	public static final int DIO_NO_AUTO = 4;
 	
 	public static void init() {
 		chassisMasterLeft = new WPI_TalonSRX(3);
