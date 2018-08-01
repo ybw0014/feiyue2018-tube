@@ -10,13 +10,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Lift extends Subsystem {
 
 	private WPI_TalonSRX lift;
-	private DigitalInput limitSwitch;
+	//private DigitalInput limitSwitch;
 	
 	private double goalLiftPosition;
 	
 	private final int LIFT_MAX = 30000;
 	private final int LIFT_MIN = 0;
 	private final int LIFT_ = 300;
+	
+	public static final double LIFT_SWITCH = 12500; //TODO tune
 	
 	public Lift() {
 		lift = new WPI_TalonSRX(RobotMap.LIFT);
@@ -27,7 +29,7 @@ public class Lift extends Subsystem {
 		lift.configAllowableClosedloopError(0, 100, 0);
 		lift.configContinuousCurrentLimit(0, 10);
 		lift.enableCurrentLimit(false);
-		lift.clearStickyFaults(10);
+		lift.setSelectedSensorPosition(0);
 		
 		lift.config_kF(0, 0, 10);
 		lift.config_kP(0, 0.4, 10);
@@ -35,8 +37,6 @@ public class Lift extends Subsystem {
 		lift.config_kD(0, 0, 10);
 		
 		goalLiftPosition = 0;
-		
-		
 	}
 	
 	public void liftUp() {
@@ -66,9 +66,9 @@ public class Lift extends Subsystem {
 		lift.set(ControlMode.Position, goalLiftPosition);
 	}
 	
-	public boolean isAtBottom() {
-		return !limitSwitch.get();
-	}
+	/*public boolean isAtBottom() {
+		return false;//return !limitSwitch.get();
+	}*/
 
 	public double getGoalLiftPosition() {
 		return goalLiftPosition;
@@ -80,6 +80,10 @@ public class Lift extends Subsystem {
 
 	public double getLiftPosition() {
 		return lift.getSelectedSensorPosition(0);
+	}
+	
+	public void setLiftToSwitch() {
+		goalLiftPosition = LIFT_SWITCH;
 	}
 	
     public void initDefaultCommand() {

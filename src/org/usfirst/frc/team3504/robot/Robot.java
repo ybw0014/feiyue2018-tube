@@ -8,7 +8,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team3504.robot.GameData.*;
 import org.usfirst.frc.team3504.robot.commands.*;
+import org.usfirst.frc.team3504.robot.commands.autonomous.*;
 import org.usfirst.frc.team3504.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
@@ -18,6 +20,7 @@ public class Robot extends TimedRobot {
 	public static Climber climber;
 	public static Intake intake;
 	public static Lift lift;
+	public static GameData gameData;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -36,9 +39,10 @@ public class Robot extends TimedRobot {
 		climber = new Climber();
 		intake = new Intake();
 		lift = new Lift(); 
+		
+		gameData = new GameData();
 
 		oi = new OI();
-		chooser.addDefault("Default Auto", new AutonomousCommands());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		
@@ -73,16 +77,59 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+		gameData.reset();
+		
+		Robot.chassis.zeroSensors();
+		gameData.reset();
+	
+		System.out.println("Starting Auto...");
+		//Get robot side, switch side, scale side, element priority
+		FieldSide robotSide = gameData.getRobotSide();
+		FieldElement elementPriority = gameData.getElementPriority();
+		FieldSide switchSide = gameData.getSwitchSide(); 
+		//FieldSide scaleSide = gameData.getScaleSide();
+		//boolean scaleOverride = gameData.getScaleOverride();
+		
+		if(gameData.getNoAuto())
+		{
+			autonomousCommand = null;
+		}
+		else if(robotSide == FieldSide.left || robotSide == FieldSide.right) //if robot in the corner
+			
+		{
+			//Robot.shifters.shiftGear(Shifters.Speed.kHigh);
 
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
+			if (elementPriority == FieldElement.Switch) //switch priority
+			{
+				if (switchSide == robotSide) autonomousCommand = new AutoNearSwitch(switchSide);
+				//else if (scaleSide == robotSide) autonomousCommand = new AutoNearScale(scaleSide);
+				//else if (scaleOverride) autonomousCommand = new AutoFarScaleAbsolute(scaleSide);
+				else autonomousCommand = new AutoDriveToBaseline();
+			}
+			/*	scale priority - probably won't need this since we cannot do scale
+			else 
+			{
+				if (scaleSide == robotSide) autonomousCommand = new AutoNearScale(scaleSide);
+				else if (scaleOverride) autonomousCommand = new AutoFarScaleAbsolute(scaleSide);
+				else if (switchSide == robotSide) autonomousCommand = new AutoNearSwitch(switchSide);
+				else autonomousCommand = new AutoDriveToBaseline();
+			}
+			*/
+		}
+		else if(robotSide == FieldSide.middle)
+		{
+			//Robot.shifters.shiftGear(Shifters.Speed.kLow);
+			if (switchSide != FieldSide.bad) autonomousCommand = new AutoMiddleSwitch(switchSide);
+			else autonomousCommand = new AutoDriveToBaseline();
+		}
+		else 
+		{
+			System.out.println("AutoInit: Robot field side from DIO ports invalid!!");
+			autonomousCommand = new AutoDriveToBaseline();
+		}
+		
+		System.out.println("Auto: " + autonomousCommand);
+		
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}

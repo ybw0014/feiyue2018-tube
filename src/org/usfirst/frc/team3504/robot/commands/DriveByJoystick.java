@@ -16,10 +16,7 @@ public class DriveByJoystick extends Command{
     protected void execute() {
     	
     	//left controller
-    	if(Robot.oi.getJoyStick()!=null)
-    		Robot.chassis.driveByJoystick(Robot.oi.getJoyStick().getY(), Robot.oi.getJoyStick().getX());
-    	else if(Robot.oi.getGamePad()!=null)
-    		Robot.chassis.driveByJoystick(Robot.oi.getJoyStick().getY(), Robot.oi.getJoyStick().getX());
+    	Robot.chassis.driveByJoystick(Robot.oi.getGamePad().getY(), Robot.oi.getGamePad().getX());
     	//right controller
     	//Robot.chassis.driveByJoystick(Robot.oi.getJoyStick().getThrottle(), Robot.oi.getJoyStick().getZ());
     }

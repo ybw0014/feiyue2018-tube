@@ -22,16 +22,25 @@ public class RobotMap {
 
 	public static final double WHEEL_DIAMETER = 6.28;
 	
+	public static final double CODES_PER_WHEEL_REV = 256.0 * (60.0 / 24.0) * (36.0 / 12.0) * 4;
+	
 	//CLimber
-	public static final int CLIMBER = 10;
+	public static final int CLIMBER = 12;
 	
 	//Lift
 	public static final int LIFT = 10;
-	public static final int LIMIT_SWITCH = 8;
+	//public static final int LIMIT_SWITCH = 8;
 	
 	//Intake
 	public static WPI_TalonSRX leftIntake;
 	public static WPI_TalonSRX rightIntake;
+	
+	//DIO
+	public static final int DIO_INCHER = 0;
+	public static final int DIO_ = 1;
+	public static final int DIO_sad = 2;
+	public static final int DIO_sd = 3;
+	public static final int DIO_x = 4;
 	
 	public static void init() {
 		chassisMasterLeft = new WPI_TalonSRX(3);
@@ -43,5 +52,6 @@ public class RobotMap {
 		
 		leftIntake = new WPI_TalonSRX(11);
 		rightIntake = new WPI_TalonSRX(9);
+		
 	}
 }

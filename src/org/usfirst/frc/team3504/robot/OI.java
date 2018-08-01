@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team3504.robot.commands.*;
 
 public class OI {
-	private Joystick gamePad;
-	private Joystick joyStick;
+	private Joystick gamePad = null;
+	private Joystick joyStick = null;
 	
 	private Button gbutton1,gbutton2,gbutton3,gbutton4,gbutton5,gbutton6,gbutton7,gbutton8,gbutton9,gbutton10,gbutton11,gbutton12;
 	private Button jbutton1,jbutton2,jbutton3,jbutton4,jbutton5,jbutton6,jbutton7,jbutton8,jbutton9,jbutton10,jbutton11,jbutton12;
@@ -16,7 +16,6 @@ public class OI {
 		gamePad = new Joystick(RobotMap.GAMEPAD_PORT);
 		joyStick = new Joystick(RobotMap.JOYSTICK_PORT);
 		
-		if(gamePad != null) {
 		gbutton1 = new JoystickButton(gamePad, 1); 
 		gbutton2 = new JoystickButton(gamePad, 2);
 		gbutton3 = new JoystickButton(gamePad, 3);
@@ -29,9 +28,7 @@ public class OI {
 		gbutton10 = new JoystickButton(gamePad, 10);
 		gbutton11 = new JoystickButton(gamePad, 11);
 		gbutton12 = new JoystickButton(gamePad, 12);
-		}
 		
-		if(joyStick != null) {
 		jbutton1 = new JoystickButton(joyStick, 1); 
 		jbutton2 = new JoystickButton(joyStick, 2);
 		jbutton3 = new JoystickButton(joyStick, 3);
@@ -44,15 +41,14 @@ public class OI {
 		jbutton10 = new JoystickButton(joyStick, 10);
 		jbutton11 = new JoystickButton(joyStick, 11);
 		jbutton12 = new JoystickButton(joyStick, 12);
-		}
 		
 		if(gamePad != null) {
-		gbutton1.whenPressed(new OpenIntake());
-		gbutton4.whenPressed(new ShootIntake());
+		//gbutton1.whenPressed(new OpenIntake());
+		//gbutton4.whenPressed(new ShootIntake());
 		
 		gbutton2.whenPressed(new OpenPneumatic());
 		gbutton3.whenPressed(new ClosePneumatic());
-		
+		/*
 		gbutton5.whenPressed(new LiftUp());
 		gbutton5.whenReleased(new LiftStop());
 		gbutton7.whenPressed(new LiftDown());
@@ -62,11 +58,11 @@ public class OI {
 		gbutton6.whenReleased(new ClimbStop());
 		gbutton8.whenPressed(new ClimbDown());
 		gbutton8.whenReleased(new ClimbStop());
+		*/
 		}
 		
-		if(joyStick != null) {
-		jbutton1.whenPressed(new OpenPneumatic());
-		jbutton2.whenPressed(new ClosePneumatic());
+		//jbutton1.whenPressed(new OpenPneumatic());
+		//jbutton2.whenPressed(new ClosePneumatic());
 		
 		jbutton4.whenPressed(new LiftUp());
 		jbutton4.whenReleased(new LiftStop());
@@ -80,10 +76,10 @@ public class OI {
 		jbutton11.whenReleased(new ClimbStop());
 		jbutton12.whenPressed(new ClimbDown());
 		jbutton12.whenReleased(new ClimbStop());
-		}
+		
 	}
 	public Joystick getGamePad() {
-		return this.gamePad; 
+		return this.gamePad;
 	}
 	
 	public Joystick getJoyStick() {

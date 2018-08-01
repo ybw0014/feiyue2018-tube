@@ -117,7 +117,6 @@ public class Chassis extends Subsystem implements PIDOutput{
     	SmartDashboard.putString("driveByJoyStick:", "Y: " + yDir + "  X: " + xDir);
     	drive.arcadeDrive(yDir,xDir);
     }
-
     
     public void setInvert(boolean left,boolean right) {
     	//if the moters are spinning in opposite directions
@@ -191,5 +190,91 @@ public class Chassis extends Subsystem implements PIDOutput{
     	drive.stopMotor();
     }
 
+    public WPI_TalonSRX getLeftTalon() {
+    	return this.masterLeft;
+    }
+    
+    public WPI_TalonSRX getRightTalon() {
+    	return this.masterRight;
+    }
+
+    public void zeroSensors() {
+		masterLeft.getSensorCollection().setQuadraturePosition(0, 10);
+		masterRight.getSensorCollection().setQuadraturePosition(0, 10);
+		slaveLeftA.getSensorCollection().setQuadraturePosition(0, 10);
+		slaveLeftB.getSensorCollection().setQuadraturePosition(0, 10);
+		slaveRightA.getSensorCollection().setQuadraturePosition(0, 10);
+		slaveRightB.getSensorCollection().setQuadraturePosition(0, 10);
+		// the arguments 0,10 are from GOS; not sure whether to change to 0,0
+		System.out.println("HOPEFULLY ALL TALONS IN CHASSIS ARE ZEROED");
+	}
+    
+	public void zeroEncoder() {
+		masterLeft.getSensorCollection().setQuadraturePosition(0, 10);
+		masterRight.getSensorCollection().setQuadraturePosition(0, 10);
+		System.out.println("Chassis: Encoders are zeroed.");
+	}
+	
+	public double getYaw() {
+		double[] imuData = new double[3];
+		pigeonIMU.getYawPitchRoll(imuData);
+		return imuData[0];
+	}
+    
+	public void configForMotionMagic() {
+		masterLeft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PID_DISTANCE, 10);
+		/* Remote 0 will be the other side's Talon */
+		masterRight.configRemoteFeedbackFilter(masterLeft.getDeviceID(), RemoteSensorSource.TalonSRX_SelectedSensor, REMOTE_ENCODER, 10);
+		/* Remote 1 will be a pigeon */
+		//masterRight.configRemoteFeedbackFilter(Robot.collector.getRightCollectorID(), RemoteSensorSource.GadgeteerPigeon_Yaw, REMOTE_PIGEON, 10);
+		/* setup sum and difference signals */
+		masterRight.configSensorTerm(SensorTerm.Sum0, FeedbackDevice.RemoteSensor0, 10);
+		masterRight.configSensorTerm(SensorTerm.Sum1, FeedbackDevice.QuadEncoder, 10);
+		masterRight.configSensorTerm(SensorTerm.Diff1, FeedbackDevice.RemoteSensor0, 10);
+		masterRight.configSensorTerm(SensorTerm.Diff0, FeedbackDevice.QuadEncoder, 10);
+		/* select sum for distance(0), different for turn(1) */
+		masterRight.configSelectedFeedbackSensor(FeedbackDevice.SensorSum, PID_DISTANCE, 10);
+		masterRight.configSelectedFeedbackCoefficient(1.0, PID_DISTANCE, 10);
+		masterRight.configSelectedFeedbackSensor(FeedbackDevice.RemoteSensor1, PID_TURNING, 10);
+		masterRight.configSelectedFeedbackCoefficient(TURN_UNITS_PER_ROTATION / PIGEON_UNITS_PER_ROTATION, PID_TURNING, 10);
+	
+		//telemetry------------------
+		masterRight.setStatusFramePeriod(StatusFrame.Status_12_Feedback1, 20, 10);
+		masterRight.setStatusFramePeriod(StatusFrame.Status_13_Base_PIDF0, 20, 10);
+		masterRight.setStatusFramePeriod(StatusFrame.Status_14_Turn_PIDF1, 20, 10);
+		masterRight.setStatusFramePeriod(StatusFrame.Status_10_Targets, 20, 10);
+		/* speed up the left since we are polling it's sensor */
+		masterLeft.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 5, 10);
+
+		masterLeft.configNeutralDeadband(0.001, 10);
+		masterRight.configNeutralDeadband(0.001, 10);
+
+		masterRight.configMotionAcceleration(5000, 10); //28000
+		masterRight.configMotionCruiseVelocity(10000, 10);
+
+		/* max out the peak output (for all modes).  However you can
+		 * limit the output of a given PID object with configClosedLoopPeakOutput().
+		 */
+		masterLeft.configPeakOutputForward(+1.0, 10);
+		masterLeft.configPeakOutputReverse(-1.0, 10);
+		masterRight.configPeakOutputForward(+1.0, 10);
+		masterRight.configPeakOutputReverse(-1.0, 10);
+		
+		masterLeft.setNeutralMode(NeutralMode.Brake);
+		masterRight.setNeutralMode(NeutralMode.Brake);
+		
+		//pid loop speed = 1ms
+		masterRight.configSetParameter(ParamEnum.ePIDLoopPeriod, 1, 0x00, PID_DISTANCE, 10);
+		masterRight.configSetParameter(ParamEnum.ePIDLoopPeriod, 1, 0x00, PID_TURNING, 10);
+		
+		/**
+		 * false means talon's local output is PID0 + PID1, and other side Talon is PID0 - PID1
+		 * true means talon's local output is PID0 - PID1, and other side Talon is PID0 + PID1
+		 */
+		masterRight.configAuxPIDPolarity(false, 10);
+		
+		masterRight.selectProfileSlot(SLOT_DISTANCE, PID_DISTANCE);
+		masterRight.selectProfileSlot(SLOT_TURNING, PID_TURNING);
+	}
 }
 
