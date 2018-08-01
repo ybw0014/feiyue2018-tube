@@ -62,6 +62,7 @@ public class Lift extends Subsystem {
 	public void setLiftSpeed(double speed) {
 		lift.set(speed);
 	}
+	
 	public void liftStop() {
 		lift.stopMotor();
 	}
