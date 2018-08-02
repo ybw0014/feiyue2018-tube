@@ -20,7 +20,7 @@ public class Collector extends Subsystem {
     	rightIntakeMotor.setSafetyEnabled(false);
     	leftIntakeMotor.setSafetyEnabled(false);
     	
-    	this.setInvert(false,true);
+    	this.setInvert(true,false);
     }
     
     public void stop() {
@@ -34,7 +34,7 @@ public class Collector extends Subsystem {
     }
     
     public void collectCube() {
-    	leftIntakeMotor.set(rotationSpeedOfIntake);
+    	leftIntakeMotor.set(-rotationSpeedOfIntake);
     	rightIntakeMotor.set(rotationSpeedOfIntake);
     } 
     
@@ -42,6 +42,7 @@ public class Collector extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
+    
     public void setInvert(boolean left,boolean right) {
     	leftIntakeMotor.setInverted(left);
     	rightIntakeMotor.setInverted(right);

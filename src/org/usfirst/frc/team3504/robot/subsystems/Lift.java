@@ -29,16 +29,20 @@ public class Lift extends Subsystem {
 		lift.setSafetyEnabled(false);
 		
 		lift.setInverted(true);
-		lift.setSensorPhase(true);
-		lift.configAllowableClosedloopError(0, 100, 0);
-		lift.configContinuousCurrentLimit(0, 10);
-		lift.enableCurrentLimit(false);
-		lift.setSelectedSensorPosition(0);
+		//lift.setSensorPhase(true);
+		//lift.configAllowableClosedloopError(0, 100, 0);
+		//lift.configContinuousCurrentLimit(0, 10);
+		//lift.enableCurrentLimit(false);
+		//lift.setSensorPhase(true);
+    	//lift.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,0);
+
 		
-		lift.config_kF(0, 0, 10);
-		lift.config_kP(0, 0.35, 10);
-		lift.config_kI(0, 0, 10);
-		lift.config_kD(0, 0, 10);
+		//lift.setSelectedSensorPosition(0);
+		
+		//lift.config_kF(0, 0, 10);
+		//lift.config_kP(0, 0.5, 10);
+		//lift.config_kI(0, 0, 10);
+		//lift.config_kD(0, 0, 10);
 		
 		goalLiftPosition = 0;
 	}
@@ -58,7 +62,7 @@ public class Lift extends Subsystem {
 		else
 			goalLiftPosition = goalPosition;
 	}
-	 
+	
 	public void setLiftSpeed(double speed) {
 		lift.set(speed);
 	}

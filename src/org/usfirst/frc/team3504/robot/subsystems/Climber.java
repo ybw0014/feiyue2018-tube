@@ -24,7 +24,13 @@ public class Climber extends Subsystem {
 		climberRight.setNeutralMode(NeutralMode.Brake);
 		climberRight.configContinuousCurrentLimit(200, 10);
 		
+		climberLeft.setSafetyEnabled(false);
+		climberRight.setSafetyEnabled(false);
+		
 		setInverted(false,false);
+		
+		setFPID(climberLeft);
+		setFPID(climberRight);
 		
 	}
 	
@@ -43,12 +49,12 @@ public class Climber extends Subsystem {
 		climberRight.setInverted(right);
 	}
 	
-	public void setDPIF(WPI_TalonSRX climbMotor) {
+	public void setFPID(WPI_TalonSRX climbMotor) {
 		climbMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 		climbMotor.setSensorPhase(true);
 
 		climbMotor.config_kF(0, 0, 0);
-		climbMotor.config_kP(0, 0.5, 0);
+		climbMotor.config_kP(0, 0.35, 0);
 		climbMotor.config_kI(0, 0, 0);
 		climbMotor.config_kD(0, 0, 0);
 	

@@ -92,22 +92,7 @@ public class Chassis extends Subsystem implements PIDOutput{
     	
     	masterLeft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,0);
     	masterRight.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,0);
-    	
-    	
-    	
-    	/*leftEncoder = new Encoder(RobotMap.ENCODER_LEFT_1, RobotMap.ENCODER_LEFT_2, false, Encoder.EncodingType.k4X);
-		leftEncoder.setMaxPeriod(.1);
-		leftEncoder.setMinRate(10);
-		leftEncoder.setDistancePerPulse(5);
-		leftEncoder.setReverseDirection(false);
-		leftEncoder.setSamplesToAverage(7);
-		
-		rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT_1, RobotMap.ENCODER_RIGHT_2, false, Encoder.EncodingType.k4X);
-		rightEncoder.setMaxPeriod(.1);
-		rightEncoder.setMinRate(10);
-		rightEncoder.setDistancePerPulse(5);
-		rightEncoder.setReverseDirection(false);
-		rightEncoder.setSamplesToAverage(7);*/
+
     	
     }
 
@@ -127,8 +112,6 @@ public class Chassis extends Subsystem implements PIDOutput{
     }
     
     public void setInvert(boolean left,boolean right) {
-    	//if the moters are spinning in opposite directions
-    	
     	masterLeft.setInverted(left);
     	slaveLeftA.setInverted(left);
     	slaveLeftB.setInverted(left);
@@ -139,7 +122,6 @@ public class Chassis extends Subsystem implements PIDOutput{
     }
     
     public void reverseAll() {
-    	//if the motors are together but completely reversed (do not pair with invert)
     	masterLeft.setInverted(true);
     	slaveLeftA.setInverted(true);
     	slaveLeftB.setInverted(true);
@@ -164,7 +146,7 @@ public class Chassis extends Subsystem implements PIDOutput{
     public void setFPID(WPI_TalonSRX talon) {
     	talon.setSelectedSensorPosition(0, 0, 0);
     	talon.config_kF(0, 0, 0);
-    	talon.config_kP(0, 0.5, 0);
+    	talon.config_kP(0, 0.4, 0);
     	talon.config_kI(0, 0, 0);
     	talon.config_kD(0, 0, 0);
     }
